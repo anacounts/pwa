@@ -1,0 +1,36 @@
+.app-bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: var(--color-theme);
+}
+
+.app-bottom-nav__menu {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 0;
+  margin: 1rem;
+  list-style-type: none;
+}
+
+.app-bottom-nav__item {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.app-bottom-nav__item--active {
+  --color: var(--color-light);
+}
+
+.app-bottom-nav__link {
+  color: var(--color, rgba(var(--color-light-rgb) / 50%));
+  text-decoration: none;
+}
+
+.app-bottom-nav__item-icon {
+  display: block;
+  --size: var(--font-size-lg);
+  margin-left: auto;
+  margin-right: auto;
+}

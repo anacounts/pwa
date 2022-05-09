@@ -1,8 +1,11 @@
 import React from "react";
-import { Routes, Route, Navigate, useLocation } from "react-router-dom";
+import { Routes, Route, Navigate, useLocation, Outlet } from "react-router-dom";
 import { useAuth } from "./features/auth/context";
 
+import AppLayout from "./features/app/AppLayout";
 import LoginPage from "./features/auth/LoginPage";
+import BooksPage from "./features/books/BooksPage";
+import ProfilePage from "./features/profile/ProfilePage";
 
 import "./App.css";
 
@@ -13,10 +16,15 @@ function App() {
         path="/"
         element={
           <RequireAuth>
-            <div>Homepage</div>
+            <AppLayout>
+              <Outlet />
+            </AppLayout>
           </RequireAuth>
         }
-      />
+      >
+        <Route index element={<BooksPage />} />
+        <Route path="/profile" element={<ProfilePage />} />
+      </Route>
       <Route path="/auth">
         <Route path="login" element={<LoginPage />} />
       </Route>
