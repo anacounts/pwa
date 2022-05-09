@@ -1,0 +1,8 @@
+:root {
+  --color-theme: rgb(255, 61, 0);
+  --color-theme-rgb: 255 61 0;
+  --color-dark: rgba(0 0 0 / 98%);
+  --color-light: rgb(255 255 255);
+
+  --color-font: var(--color-dark);
+}

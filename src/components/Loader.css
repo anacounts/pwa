@@ -1,0 +1,34 @@
+.loader {
+  display: inline-block;
+  position: relative;
+  width: var(--size, 2rem);
+  height: var(--size, 2rem);
+  border-radius: 50%;
+  background: linear-gradient(
+    0deg,
+    rgba(var(--color-theme-rgb) / 0.2) 33%,
+    rgba(var(--color-theme-rgb) / 1) 100%
+  );
+  animation: rotation 1s linear infinite;
+}
+
+.loader::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: calc(var(--size, 2rem) - 4px);
+  height: calc(var(--size, 2rem) - 4px);
+  border-radius: 50%;
+  background-color: var(--color-light);
+  transform: translate(-50%, -50%);
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
