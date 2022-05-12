@@ -3,6 +3,8 @@ import { List, ListScroller, ListTitle } from "../../components/list/List";
 
 import { useQuery } from "@apollo/client";
 import { GET_BOOKS } from "./queries";
+
+import { PageLoader } from "../../components/Loader";
 import {
   ListItemAvatar,
   ListItem,
@@ -22,7 +24,7 @@ function formatBookSubtitle(users) {
 function BooksPage() {
   const { data, loading } = useQuery(GET_BOOKS);
 
-  if (loading) return;
+  if (loading) return <PageLoader />;
 
   const { books } = data;
 

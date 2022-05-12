@@ -1,6 +1,10 @@
 @import "./assets/style/root.css";
 @import "./assets/style/fonts.css";
 
+:root {
+  accent-color: var(--theme-color);
+}
+
 body {
   margin: 0;
   font-family: var(--font-family-base);
@@ -16,4 +20,16 @@ code {
 a {
   color: var(--color-link);
   text-decoration: none;
+}
+
+/* # Form */
+
+input {
+  border: none;
+  font-size: var(--font-size-base);
+  outline: none;
+}
+
+input::placeholder {
+  font-style: italic;
 }

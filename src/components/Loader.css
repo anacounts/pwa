@@ -6,8 +6,8 @@
   border-radius: 50%;
   background: linear-gradient(
     0deg,
-    rgba(var(--color-theme-rgb) / 0.2) 33%,
-    rgba(var(--color-theme-rgb) / 1) 100%
+    rgba(var(--accent-color-rgb) / 0.2) 33%,
+    rgba(var(--accent-color-rgb) / 1) 100%
   );
   animation: rotation 1s linear infinite;
 }
@@ -20,7 +20,7 @@
   width: calc(var(--size, 2rem) - 4px);
   height: calc(var(--size, 2rem) - 4px);
   border-radius: 50%;
-  background-color: var(--color-light);
+  background-color: var(--background-color);
   transform: translate(-50%, -50%);
 }
 
@@ -31,4 +31,27 @@
   100% {
     transform: rotate(360deg);
   }
+}
+
+.loader--color-theme {
+  --accent-color-rgb: var(--color-theme-rgb);
+  --background-color: var(--color-light);
+}
+
+.loader--color-contrast {
+  --accent-color-rgb: var(--color-light-rgb);
+  --background-color: var(--color-theme);
+}
+
+.loader--size-sm {
+  --size: 1.5rem;
+}
+
+/* # Page Loader */
+
+.page-loader {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
 }
