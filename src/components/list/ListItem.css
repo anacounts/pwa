@@ -1,0 +1,38 @@
+/* # Wrapper */
+
+.list-item {
+  display: flex;
+  align-items: center;
+  padding: var(--spacing-side);
+}
+
+.list-item:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+/* Link */
+
+.list-item__link {
+  display: contents;
+  color: var(--color-body);
+}
+
+/* ## Avatar */
+
+.list-item__avatar {
+  width: 2rem;
+  height: 2rem;
+  margin-right: 1rem;
+  border-radius: var(--radius-full);
+}
+
+/* ## Label */
+.list-item__label {
+  flex-grow: 1;
+}
+
+.list-item__primary-line {
+  font-weight: var(--font-weight-bold);
+}
+
+/* .list-item__secondary-line {} */

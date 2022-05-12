@@ -2,7 +2,7 @@ import React from "react";
 import { Routes, Route, Navigate, useLocation, Outlet } from "react-router-dom";
 import { useAuth } from "./features/auth/context";
 
-import AppLayout from "./features/app/AppLayout";
+import RootLayout from "./layouts/RootLayout";
 import LoginPage from "./features/auth/LoginPage";
 import BooksPage from "./features/books/BooksPage";
 import ProfilePage from "./features/profile/ProfilePage";
@@ -16,14 +16,15 @@ function App() {
         path="/"
         element={
           <RequireAuth>
-            <AppLayout>
+            <RootLayout>
               <Outlet />
-            </AppLayout>
+            </RootLayout>
           </RequireAuth>
         }
       >
-        <Route index element={<BooksPage />} />
+        <Route path="/books" element={<BooksPage />} />
         <Route path="/profile" element={<ProfilePage />} />
+        <Route index element={<Navigate to="/books" />} />
       </Route>
       <Route path="/auth">
         <Route path="login" element={<LoginPage />} />

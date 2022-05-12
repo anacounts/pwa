@@ -1,0 +1,22 @@
+/* # Wrapper */
+
+.list {
+  --spacing-side: 1rem;
+}
+
+/* # Title */
+
+.list__title {
+  display: block;
+  margin-left: var(--spacing-side);
+  margin-right: var(--spacing-side);
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+}
+
+/* # Scroller */
+.list__scroller {
+  padding-left: 0;
+  margin: 0;
+  list-style-type: none;
+}

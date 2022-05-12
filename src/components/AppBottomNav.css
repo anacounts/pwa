@@ -10,7 +10,7 @@
   display: flex;
   justify-content: space-evenly;
   padding: 0;
-  margin: 1rem;
+  margin: 0.5rem;
   list-style-type: none;
 }
 
@@ -25,7 +25,6 @@
 
 .app-bottom-nav__link {
   color: var(--color, rgba(var(--color-light-rgb) / 50%));
-  text-decoration: none;
 }
 
 .app-bottom-nav__item-icon {

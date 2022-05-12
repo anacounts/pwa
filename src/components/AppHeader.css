@@ -4,6 +4,6 @@
 }
 
 .app-header__title {
+  color: var(--color-dark);
   text-transform: uppercase;
-  text-decoration: none;
 }

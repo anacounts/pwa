@@ -1,19 +1,43 @@
 :root {
   --color-theme-rgb: 255 61 0;
   --color-theme: rgb(var(--color-theme-rgb));
-  --color-dark-rgb: 11, 11, 11;
+  --color-dark-rgb: 33 33 33;
   --color-dark: rgb(var(--color-dark-rgb));
   --color-light-rgb: 243 243 243;
   --color-light: rgb(var(--color-light-rgb));
 
   /* Main color for the text of the body */
   --color-body: var(--color-dark);
-  --color-background: var(--color-light);
+  /* Links color */
+  --color-link-rgb: 0 0 238;
+  --color-link: rgb(var(--color-link-rgb));
+
+  /* Border radius */
+  --radius-sm: 0.125rem; /* 2px */
+  --radius-base: 0.25rem; /* 4px */
+  --radius-md: 0.375rem; /* 6px */
+  --radius-lg: 0.5rem; /* 8px */
+  --radius-xl: 0.75rem; /* 12px */
+  --radius-2xl: 1rem; /* 16px */
+  --radius-3xl: 1.5rem; /* 24px */
+  --radius-full: 9999px;
+
+  /* Font family */
+  --font-family-base: "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+    "Helvetica Neue", sans-serif;
+  --font-family-mono: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
 
   /* Font size */
   --font-size-base: 1rem;
   --font-size-lg: 2rem;
   --font-size-xl: 3rem;
+
+  /* Font weight */
+  --font-weight-regular: 400;
+  --font-weight-bold: 700;
+  --font-weight-black: 900;
 
   /* Shadow presets */
   --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
