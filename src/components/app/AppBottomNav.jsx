@@ -1,6 +1,6 @@
 import React, { useMemo } from "react";
 import { Link, useLocation } from "react-router-dom";
-import SvgIcon from "./SvgIcon";
+import SvgIcon from "../SvgIcon";
 
 import "./AppBottomNav.css";
 

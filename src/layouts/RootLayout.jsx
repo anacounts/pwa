@@ -1,6 +1,6 @@
 import React from "react";
-import AppBottomNav from "../components/AppBottomNav";
-import AppHeader from "../components/AppHeader";
+import AppBottomNav from "../components/app/AppBottomNav";
+import AppHeader from "../components/app/AppHeader";
 
 import "./RootLayout.css";
 
