@@ -1,0 +1,55 @@
+/* # Wrapper */
+
+.modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: var(--color-backdrop);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--transition-duration-sm) var(--transition-timing);
+}
+
+.modal--open {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.modal__dialog {
+  width: 80%;
+  max-width: 30rem;
+  margin: 10% auto;
+  background-color: var(--color-light);
+  border-radius: var(--radius-base);
+}
+
+/* # Header */
+
+.modal__header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  padding-bottom: 0;
+  margin-bottom: 1rem;
+}
+
+/* # Title */
+
+.modal__title {
+  flex-grow: 1;
+  margin: 0;
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-bold);
+  text-transform: uppercase;
+}
+
+/* # Body */
+
+.modal__body {
+  padding: 1rem;
+  padding-top: 0;
+  margin-top: 1rem;
+}

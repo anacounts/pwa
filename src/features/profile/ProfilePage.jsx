@@ -7,9 +7,14 @@ import Loader, { PageLoader } from "../../components/Loader";
 
 import "./ProfilePage.css";
 import Fab from "../../components/fab/Fab";
-import SvgIcon from "../../components/SvgIcon";
+import SvgIcon, { CloseIcon } from "../../components/SvgIcon";
 import FabContainer from "../../components/fab/FabContainer";
 import { UPDATE_PROFILE } from "./mutations";
+import Modal, {
+  ModalBody,
+  ModalHeader,
+  ModalTitle,
+} from "../../components/Modal";
 
 function ProfilePage() {
   const [editMode, setEditMode] = useState(false);
@@ -47,12 +52,7 @@ function ProfilePage() {
       role={editMode ? undefined : "none"}
     >
       <div className="profile-page__display-info">
-        <img
-          className="profile-page__avatar"
-          src={avatarUrl}
-          alt="Your avatar"
-          // TODO On click in edit mode, display a modal to send to gravatar
-        />
+        <ProfileAvatar src={avatarUrl} editMode={editMode} />
         <div>
           <input
             name="displayName"
@@ -96,6 +96,57 @@ function ProfilePage() {
         </Fab>
       </FabContainer>
     </form>
+  );
+}
+
+function ProfileAvatar({ src, editMode }) {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <>
+      <img
+        className="profile-page__avatar"
+        src={src}
+        alt="Your avatar"
+        onClick={editMode ? () => setOpen(true) : undefined}
+      />
+      <Modal open={open} onBackdropClick={() => setOpen(false)}>
+        <ModalHeader>
+          <ModalTitle>Edit your avatar</ModalTitle>
+          <CloseIcon onClick={() => setOpen(false)} />
+        </ModalHeader>
+        <ModalBody>
+          <p>
+            Anacounts uses{" "}
+            <a href="https://gravatar.com/" target="_blank" rel="noreferrer">
+              Gravatar
+            </a>{" "}
+            to display user avatars.
+            <br />
+            Gravatar is a service for providing globally unique avatars
+          </p>
+          <p>
+            To edit your avatar, create{" "}
+            <a
+              href="https://gravatar.com/connect/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              an account
+            </a>{" "}
+            and{" "}
+            <a
+              href="https://gravatar.com/emails/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              personalize your Gravatar
+            </a>
+            .
+          </p>
+        </ModalBody>
+      </Modal>
+    </>
   );
 }
 
