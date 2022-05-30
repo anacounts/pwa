@@ -1,0 +1,10 @@
+.auth-page {
+  max-width: min(90%, 33em);
+  padding: 1rem;
+  margin: 1rem auto;
+}
+
+.auth-page__form {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
