@@ -5,3 +5,9 @@ export const LOG_IN = gql`
     logIn(email: $email, password: $password)
   }
 `;
+
+export const REGISTER = gql`
+  mutation Register($email: String!, $password: String!) {
+    register(email: $email, password: $password)
+  }
+`;

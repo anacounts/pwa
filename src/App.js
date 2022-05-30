@@ -4,6 +4,7 @@ import { useAuth } from "./features/auth/context";
 
 import RootLayout from "./layouts/RootLayout";
 import LoginPage from "./features/auth/LoginPage";
+import RegisterPage from "./features/auth/RegisterPage";
 import BooksPage from "./features/books/BooksPage";
 import ProfilePage from "./features/profile/ProfilePage";
 import ProfileEditPage from "./features/profile/ProfileEditPage";
@@ -30,6 +31,7 @@ function App() {
       </Route>
       <Route path="/auth">
         <Route path="login" element={<LoginPage />} />
+        <Route path="register" element={<RegisterPage />} />
       </Route>
     </Routes>
   );
