@@ -20,7 +20,11 @@ jobs:
         with:
           node-version: 16.x
           cache: "npm"
-      - run: npm ci
-      - run: npm run build
-      - run: npx prettier --check src/
-      - run: npx eslint src/
+      - name: Install dependencies
+        run: npm ci
+      - name: Build
+        run: npm run build
+      - name: Check formatting
+        run: npx prettier --check src/
+      - name: Lint code
+        run: npx eslint src/
