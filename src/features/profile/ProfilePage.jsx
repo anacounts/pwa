@@ -34,7 +34,7 @@ function ProfilePage() {
       const formData = new FormData(event.currentTarget);
       const displayName = formData.get("displayName");
 
-      updateProfile({ variables: { displayName } });
+      updateProfile({ variables: { attrs: { displayName } } });
     },
     [editMode, updateProfile]
   );

@@ -11,14 +11,14 @@ import {
   ListItemLabel,
 } from "../../components/list/ListItem";
 
-function formatBookSubtitle(users) {
-  if (users.length === 1) {
+function formatBookSubtitle(members) {
+  if (members.length === 1) {
     return "You only";
   }
-  if (users.length === 2) {
+  if (members.length === 2) {
     return "You and 1 other person";
   }
-  return `You and ${users.length - 1} other people`;
+  return `You and ${members.length - 1} other people`;
 }
 
 function BooksPage() {
@@ -33,14 +33,14 @@ function BooksPage() {
       <List>
         <ListTitle>{books.length} books in your list</ListTitle>
         <ListScroller>
-          {books.map(({ id, name, users, avatarSrc }) => (
+          {books.map(({ id, name, members, avatarSrc }) => (
             <ListItem key={id} to={`/book/${id}`}>
               <ListItemAvatar src={avatarSrc} alt=""></ListItemAvatar>
               <ListItemLabel>
                 <span className="list-item__primary-line">{name}</span>
                 <br />
                 <span className="list-item__secondary-line">
-                  {formatBookSubtitle(users)}
+                  {formatBookSubtitle(members)}
                 </span>
               </ListItemLabel>
             </ListItem>

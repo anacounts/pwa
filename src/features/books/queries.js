@@ -5,7 +5,7 @@ export const GET_BOOKS = gql`
     books {
       id
       name
-      users {
+      members {
         id
       }
     }
