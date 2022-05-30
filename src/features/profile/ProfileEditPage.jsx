@@ -42,9 +42,7 @@ function ProfileEditPage() {
     <form className="profile-edit-page" onSubmit={handleOnSubmit}>
       <ProfileAvatar src={avatarUrl} />
       <div className="mb-4">
-        <Button color="feature" className="mr-4">
-          Save profile
-        </Button>
+        <Button className="mr-4">Save profile</Button>
         {updateLoading && <Loader size="sm" />}
         {updateData && <span>Profile successfully updated !</span>}
       </div>

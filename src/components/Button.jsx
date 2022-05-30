@@ -18,7 +18,7 @@ function buttonColorModifier(type) {
   return "button--color-" + type;
 }
 
-function Button({ children, className, color, to, ...props }) {
+function Button({ children, className, color = "feature", to, ...props }) {
   const colorModifier = buttonColorModifier(color);
 
   return maybeRenderLink(

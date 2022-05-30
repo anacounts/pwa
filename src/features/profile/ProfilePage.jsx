@@ -30,10 +30,8 @@ function ProfilePage() {
         </div>
       </div>
 
-      <Button to="/profile/edit" color="feature">
-        Edit profile
-      </Button>
-      <Button onClick={() => disconnect()} color="feature" className="ml-4">
+      <Button to="/profile/edit">Edit profile</Button>
+      <Button onClick={() => disconnect()} className="ml-4">
         Disconnect
       </Button>
 
