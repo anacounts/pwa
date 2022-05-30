@@ -5,7 +5,7 @@ import "./Icon.css";
 function Icon({ className, name, alt, ...otherProps }) {
   return (
     <svg
-      className={`svg-icon ${className ?? ""}`}
+      className={`icon ${className ?? ""}`}
       fill="currentColor"
       {...otherProps}
     >
