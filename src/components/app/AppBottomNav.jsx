@@ -1,6 +1,6 @@
 import React, { useMemo } from "react";
 import { Link, useLocation } from "react-router-dom";
-import SvgIcon from "../SvgIcon";
+import Icon from "../Icon";
 
 import "./AppBottomNav.css";
 
@@ -24,13 +24,7 @@ function AppBottomNav() {
           }
         >
           <Link to="/" className="app-bottom-nav__link">
-            <SvgIcon className="app-bottom-nav__item-icon">
-              {/* icon:book */}
-              <path
-                fill="currentColor"
-                d="M18,22A2,2 0 0,0 20,20V4C20,2.89 19.1,2 18,2H12V9L9.5,7.5L7,9V2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18Z"
-              />
-            </SvgIcon>
+            <Icon name="book" className="app-bottom-nav__item-icon" />
             <span>Books</span>
           </Link>
         </li>
@@ -40,13 +34,7 @@ function AppBottomNav() {
           }
         >
           <Link to="/profile" className="app-bottom-nav__link">
-            <SvgIcon className="app-bottom-nav__item-icon">
-              {/* icon:account */}
-              <path
-                fill="currentColor"
-                d="M12,4A4,4 0 0,1 16,8A4,4 0 0,1 12,12A4,4 0 0,1 8,8A4,4 0 0,1 12,4M12,14C16.42,14 20,15.79 20,18V20H4V18C4,15.79 7.58,14 12,14Z"
-              />
-            </SvgIcon>
+            <Icon name="account" className="app-bottom-nav__item-icon" />
             <span>Profile</span>
           </Link>
         </li>
