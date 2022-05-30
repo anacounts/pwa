@@ -22,7 +22,11 @@ export function ListTitle({ children }) {
 // # Scroller
 
 export function ListScroller({ element: Element = "ul", children }) {
-  return <Element className="list__scroller">{children}</Element>;
+  return (
+    <Element className="list__scroller" role="list">
+      {children}
+    </Element>
+  );
 }
 
 ListScroller.propTypes = {
