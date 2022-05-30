@@ -1,2 +1,3 @@
 /* If it always ends up in this, consider using Tailwind */
 @import "./utilities/spacing.css";
+@import "./utilities/text.css";

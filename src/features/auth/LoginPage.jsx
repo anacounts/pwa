@@ -1,8 +1,11 @@
 import React, { useCallback } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import Button from "../../components/Button";
 import Loader from "../../components/Loader";
 
 import { useAuth } from "./context";
+
+import "./AuthPage.css";
 
 function LoginPage() {
   const navigate = useNavigate();
@@ -26,12 +29,32 @@ function LoginPage() {
   );
 
   return (
-    <form onSubmit={handleOnSubmit}>
-      <input placeholder="email" name="email" />
-      <input placeholder="password" type="password" name="password" />
-      <button>{loading ? <Loader /> : "Sign in"}</button>
-      {error && <span>{error.message}</span>}
-    </form>
+    <div className="auth-page">
+      <h1 className="auth-page__title">Log in</h1>
+      <form onSubmit={handleOnSubmit} className="auth-page__form">
+        <label>
+          Email
+          <input placeholder="john.doe@example.com" name="email" />
+        </label>
+        <label>
+          Password
+          <input
+            placeholder="*****************"
+            type="password"
+            name="password"
+          />
+        </label>
+        <Button color="cta" className="mb-4">
+          Sign in
+        </Button>
+        {loading && <Loader className="ml-4" />}
+        {error && <div className="text-error">{error.message}</div>}
+        <div>
+          Don't have an account ? <br />
+          <Link to="/auth/register">Create one here</Link>
+        </div>
+      </form>
+    </div>
   );
 }
 
