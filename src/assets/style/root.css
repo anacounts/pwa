@@ -1,20 +1,44 @@
 :root {
-  --color-theme-rgb: 255 61 0;
-  --color-theme: rgb(var(--color-theme-rgb));
+  /* # Colors */
+
+  /* ## Common colors
+    These should not be used in the application,
+    only in variable definitions.
+  */
   --color-dark-rgb: 33 33 33;
   --color-dark: rgb(var(--color-dark-rgb));
   --color-light-rgb: 243 243 243;
   --color-light: rgb(var(--color-light-rgb));
 
-  /* Main color for the text of the body */
-  --color-body: var(--color-dark);
+  /* ## Theme color */
+  --color-theme-rgb: 255 61 0;
+  --color-theme: rgb(var(--color-theme-rgb));
+  --color-theme-contrast-rgb: var(--color-light-rgb);
+  --color-theme-contrast: var(--color-light);
+
+  --color-support-rgb: 178, 6, 0;
+  --color-support: rgb(var(--color-support));
+  --color-theme-contrast-rgb: var(--color-light-rgb);
+  --color-theme-contrast: var(--color-light);
+
   /* Links color */
   --color-link-rgb: 0 0 238;
   --color-link: rgb(var(--color-link-rgb));
+
+  /* ## Components */
+  /* Main color for the text of the body */
+  --color-body: var(--color-dark);
   /* Backdrop color */
   --color-backdrop: rgba(0 0 0 / 30%);
+  /* Background color */
+  --color-background: var(--color-light);
+  /* Controls (input, select, button...) */
+  --color-controls-background: var(--color-light);
+  --color-controls-border: rgba(var(--color-dark-rgb) / 25%);
 
-  /* Border radius */
+  /* # Other properties */
+
+  /* ## Border radius */
   --radius-sm: 0.125rem; /* 2px */
   --radius-base: 0.25rem; /* 4px */
   --radius-md: 0.375rem; /* 6px */
@@ -24,24 +48,24 @@
   --radius-3xl: 1.5rem; /* 24px */
   --radius-full: 9999px;
 
-  /* Font family */
+  /* ## Font family */
   --font-family-base: "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI",
     "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
     "Helvetica Neue", sans-serif;
   --font-family-mono: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 
-  /* Font size */
+  /* ## Font size */
   --font-size-base: 1rem;
   --font-size-lg: 2rem;
   --font-size-xl: 3rem;
 
-  /* Font weight */
+  /* ## Font weight */
   --font-weight-regular: 400;
   --font-weight-bold: 700;
   --font-weight-black: 900;
 
-  /* Shadow presets */
+  /* ## Shadow presets */
   --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
   --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
   --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
@@ -52,7 +76,7 @@
   --shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
   --shadow-none: 0 0 #0000;
 
-  /* Transition */
+  /* ## Transition */
   --transition-duration-sm: 0.1s;
   --transition-duration: 0.3s;
 

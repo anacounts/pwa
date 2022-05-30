@@ -21,7 +21,7 @@
   width: 80%;
   max-width: 30rem;
   margin: 10% auto;
-  background-color: var(--color-light);
+  background-color: var(--color-background);
   border-radius: var(--radius-base);
 }
 
