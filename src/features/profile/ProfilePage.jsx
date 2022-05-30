@@ -6,9 +6,12 @@ import { PageLoader } from "../../components/Loader";
 import { useQuery } from "@apollo/client";
 import { GET_PROFILE } from "./queries";
 
+import { useAuth } from "../auth/context";
+
 import "./ProfilePage.css";
 
 function ProfilePage() {
+  const { disconnect } = useAuth();
   const { data, loading } = useQuery(GET_PROFILE);
 
   if (loading) return <PageLoader />;
@@ -29,6 +32,9 @@ function ProfilePage() {
 
       <Button to="/profile/edit" color="feature">
         Edit profile
+      </Button>
+      <Button onClick={() => disconnect()} color="feature" className="ml-4">
+        Disconnect
       </Button>
 
       {/* TODO Revoke all auth tokens */}
