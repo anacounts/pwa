@@ -19,14 +19,30 @@ a {
   text-decoration: none;
 }
 
-/* # Form */
-
-input {
-  border: none;
+button {
   font-size: var(--font-size-base);
-  outline: none;
+  font-family: var(--font-family-base);
+  color: var(--color-body);
 }
 
-input::placeholder {
-  font-style: italic;
+/* # Form */
+label {
+  display: block;
+  margin-bottom: 1rem;
+}
+
+input {
+  display: block;
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+  padding: 0.5rem;
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgba(var(--color-dark-rgb) / 25%);
+  border-radius: var(--radius-lg);
+  font-size: var(--font-size-base);
+}
+
+input:focus {
+  outline-color: var(--color-theme);
 }

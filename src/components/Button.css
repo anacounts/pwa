@@ -1,0 +1,23 @@
+.button {
+  display: inline-block;
+  padding: 0.5rem;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: var(--radius-lg);
+  text-transform: uppercase;
+  color: var(--color-body);
+}
+
+.button--color-cta {
+  color: var(--color-light);
+  background-color: var(--color-theme);
+}
+
+.button--color-feature {
+  background-color: var(--color-light);
+  border-color: rgba(var(--color-dark-rgb) / 25%);
+}
+
+.button--color-invisible {
+  display: contents;
+}

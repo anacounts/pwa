@@ -3,6 +3,7 @@
   position: relative;
   width: var(--size, 2rem);
   height: var(--size, 2rem);
+  vertical-align: middle;
   border-radius: 50%;
   background: linear-gradient(
     0deg,

@@ -1,6 +1,9 @@
 :root {
   --color-theme-rgb: 255 61 0;
   --color-theme: rgb(var(--color-theme-rgb));
+  /* TODO Find a secondary color */
+
+  /* TODO Change these to `color-theme-contrast` or similar */
   --color-dark-rgb: 33 33 33;
   --color-dark: rgb(var(--color-dark-rgb));
   --color-light-rgb: 243 243 243;

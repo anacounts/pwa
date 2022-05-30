@@ -2,10 +2,11 @@ import React from "react";
 
 import "./SvgIcon.css";
 
+// TODO Rework svg icons, use svg sprites
 function SvgIcon({ children, className, ...otherProps }) {
   return (
     <svg
-      className={"svg-icon " + className}
+      className={`svg-icon ${className ?? ""}`}
       viewBox="0 0 24 24"
       {...otherProps}
     >

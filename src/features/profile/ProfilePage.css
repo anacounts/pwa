@@ -8,12 +8,6 @@
   gap: 1rem;
 }
 
-.profile-page__avatar {
-  width: 4rem;
-  height: 4rem;
-  border-radius: var(--radius-full);
-}
-
 .profile-page__display-name {
   font-weight: var(--font-weight-bold);
 }

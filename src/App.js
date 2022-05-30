@@ -6,6 +6,7 @@ import RootLayout from "./layouts/RootLayout";
 import LoginPage from "./features/auth/LoginPage";
 import BooksPage from "./features/books/BooksPage";
 import ProfilePage from "./features/profile/ProfilePage";
+import ProfileEditPage from "./features/profile/ProfileEditPage";
 
 import "./App.css";
 
@@ -24,7 +25,8 @@ function App() {
       >
         <Route path="/books" element={<BooksPage />} />
         <Route path="/profile" element={<ProfilePage />} />
-        <Route index element={<Navigate to="/books" />} />
+        <Route path="/profile/edit" element={<ProfileEditPage />} />
+        <Route index element={<Navigate to="/books" replace />} />
       </Route>
       <Route path="/auth">
         <Route path="login" element={<LoginPage />} />
