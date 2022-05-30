@@ -38,7 +38,9 @@ input {
   padding: 0.5rem;
   border-width: 1px;
   border-style: solid;
-  border-color: rgba(var(--color-dark-rgb) / 25%);
+  border-color: var(--color-controls-border);
+  background-color: var(--color-controls-background);
+  color: var(--color-body);
   border-radius: var(--radius-lg);
   font-size: var(--font-size-base);
 }

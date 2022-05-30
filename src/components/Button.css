@@ -9,13 +9,13 @@
 }
 
 .button--color-cta {
-  color: var(--color-light);
+  color: var(--color-theme-contrast);
   background-color: var(--color-theme);
 }
 
 .button--color-feature {
-  background-color: var(--color-light);
-  border-color: rgba(var(--color-dark-rgb) / 25%);
+  background-color: var(--color-controls-background);
+  border-color: var(--color-controls-border);
 }
 
 .button--color-invisible {

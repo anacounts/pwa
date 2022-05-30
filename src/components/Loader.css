@@ -36,11 +36,11 @@
 
 .loader--color-theme {
   --accent-color-rgb: var(--color-theme-rgb);
-  --background-color: var(--color-light);
+  --background-color: var(--color-theme-contrast);
 }
 
 .loader--color-contrast {
-  --accent-color-rgb: var(--color-light-rgb);
+  --accent-color-rgb: var(--color-theme-contrast-rgb);
   --background-color: var(--color-theme);
 }
 

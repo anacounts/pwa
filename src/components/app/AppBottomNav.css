@@ -20,11 +20,11 @@
 }
 
 .app-bottom-nav__item--active {
-  --color: var(--color-light);
+  --color: var(--color-theme-contrast);
 }
 
 .app-bottom-nav__link {
-  color: var(--color, rgba(var(--color-light-rgb) / 50%));
+  color: var(--color, rgba(var(--color-theme-contrast-rgb) / 50%));
 }
 
 .app-bottom-nav__item-icon {

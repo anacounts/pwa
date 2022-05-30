@@ -3,7 +3,7 @@
   border: none;
   border-radius: var(--radius-full);
   background-color: var(--color-theme);
-  color: var(--color-light);
+  color: var(--color-controls-background);
 }
 
 .fab__icon {
