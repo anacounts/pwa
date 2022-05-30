@@ -1,13 +1,13 @@
 import React, { useCallback, useState } from "react";
 import Avatar from "../../components/Avatar";
 import Button from "../../components/Button";
+import Icon from "../../components/Icon";
 import Loader, { PageLoader } from "../../components/Loader";
 import Modal, {
   ModalBody,
   ModalHeader,
   ModalTitle,
 } from "../../components/Modal";
-import { CloseIcon } from "../../components/SvgIcon";
 
 import { useMutation, useQuery } from "@apollo/client";
 import { GET_PROFILE } from "./queries";
@@ -94,7 +94,9 @@ function ProfileAvatar({ src }) {
       <Modal open={open} onBackdropClick={() => setOpen(false)}>
         <ModalHeader>
           <ModalTitle>Edit your avatar</ModalTitle>
-          <CloseIcon onClick={() => setOpen(false)} />
+          <Button color="invisible">
+            <Icon name="close" onClick={() => setOpen(false)} />
+          </Button>
         </ModalHeader>
         <ModalBody>
           <p>
