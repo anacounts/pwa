@@ -1,4 +1,5 @@
 import React, { useCallback, useState } from "react";
+import { Link } from "react-router-dom";
 import Avatar from "../../components/Avatar";
 import Button from "../../components/Button";
 import Icon from "../../components/Icon";
@@ -34,17 +35,20 @@ function ProfileEditPage() {
 
   if (loading) return <PageLoader />;
 
-  const {
-    profile: { avatarUrl, displayName, email },
-  } = data;
+  const { avatarUrl, displayName, email } = data.profile;
 
   return (
     <form className="profile-edit-page" onSubmit={handleOnSubmit}>
       <ProfileAvatar src={avatarUrl} />
-      <div className="mb-4">
+      <div className="profile-edit-page__save-button">
         <Button className="mr-4">Save profile</Button>
         {updateLoading && <Loader size="sm" />}
-        {updateData && <span>Profile successfully updated !</span>}
+        {updateData && (
+          <span>
+            Profile successfully updated ! <br />
+            <Link to="/profile">Go back to your profile</Link>
+          </span>
+        )}
       </div>
       <label>
         Display name
