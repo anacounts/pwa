@@ -4,6 +4,9 @@ import { List, ListScroller, ListTitle } from "../../components/list/List";
 import { useQuery } from "@apollo/client";
 import { GET_BOOKS } from "./queries";
 
+import FabContainer from "../../components/fab/FabContainer";
+import Fab from "../../components/fab/Fab";
+import Icon from "../../components/Icon";
 import { PageLoader } from "../../components/Loader";
 import {
   ListItemAvatar,
@@ -47,6 +50,11 @@ function BooksPage() {
           ))}
         </ListScroller>
       </List>
+      <FabContainer>
+        <Fab to="/books/new">
+          <Icon name="plus" alt="Add new book" />
+        </Fab>
+      </FabContainer>
     </>
   );
 }
