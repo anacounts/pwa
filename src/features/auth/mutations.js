@@ -11,3 +11,9 @@ export const REGISTER = gql`
     register(email: $email, password: $password)
   }
 `;
+
+export const INVALIDATE_TOKEN = gql`
+  mutation InvalidateToken($token: String!) {
+    invalidateToken(token: $token)
+  }
+`;

@@ -1,13 +1,16 @@
 import React, { useState } from "react";
 
-import { useMutation } from "@apollo/client";
-import { LOG_IN } from "./mutations";
+import { useApolloClient, useMutation } from "@apollo/client";
+import { INVALIDATE_TOKEN, LOG_IN } from "./mutations";
 
 const AuthContext = React.createContext(null);
 
 export function AuthProvider({ children }) {
+  const apolloClient = useApolloClient();
+
   const [token, setToken] = useState(localStorage.getItem("authToken"));
   const [logIn, { loading, error }] = useMutation(LOG_IN);
+  const [invalidateToken] = useMutation(INVALIDATE_TOKEN);
 
   async function signin(email, password) {
     const {
@@ -20,9 +23,14 @@ export function AuthProvider({ children }) {
     setToken(token);
   }
 
-  function disconnect() {
-    localStorage.removeItem("authToken");
-    setToken(null);
+  async function disconnect() {
+    try {
+      await invalidateToken({ variables: { token } });
+    } finally {
+      localStorage.removeItem("authToken");
+      setToken(null);
+      await apolloClient.cache.reset();
+    }
   }
 
   return (
