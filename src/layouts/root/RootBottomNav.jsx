@@ -1,14 +1,14 @@
 import React, { useMemo } from "react";
 import { Link, useLocation } from "react-router-dom";
-import Icon from "../Icon";
+import Icon from "../../components/Icon";
 
-import "./AppBottomNav.css";
+import "./RootBottomNav.css";
 
 function getActiveClass(activeItem, currentItem) {
   return activeItem === currentItem ? " app-bottom-nav__item--active" : "";
 }
 
-function AppBottomNav() {
+function RootBottomNav() {
   const location = useLocation();
 
   const activeItem = useMemo(() => {
@@ -43,4 +43,4 @@ function AppBottomNav() {
   );
 }
 
-export default AppBottomNav;
+export default RootBottomNav;

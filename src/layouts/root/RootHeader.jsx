@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 
-import "./AppHeader.css";
+import "./RootHeader.css";
 
-function AppHeader() {
+function RootHeader() {
   return (
     <header className="app-header">
       <nav>
@@ -14,4 +14,4 @@ function AppHeader() {
   );
 }
 
-export default AppHeader;
+export default RootHeader;

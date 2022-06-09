@@ -1,15 +1,15 @@
 import React from "react";
-import AppBottomNav from "../components/app/AppBottomNav";
-import AppHeader from "../components/app/AppHeader";
+import RootBottomNav from "./RootBottomNav";
+import RootHeader from "./RootHeader";
 
 import "./RootLayout.css";
 
 function RootLayout({ children }) {
   return (
     <>
-      <AppHeader />
+      <RootHeader />
       <main className="app-layout__main">{children}</main>
-      <AppBottomNav />
+      <RootBottomNav />
     </>
   );
 }
