@@ -9,6 +9,7 @@ import ProfilePage from "./features/profile/ProfilePage";
 import ProfileEditPage from "./features/profile/ProfileEditPage";
 
 import RootLayout from "./layouts/root/RootLayout";
+import FormLayout from "./layouts/form/FormLayout";
 
 import "./App.css";
 
@@ -27,13 +28,24 @@ function App() {
       >
         <Route path="/books" element={<BooksPage />} />
         <Route path="/profile" element={<ProfilePage />} />
+      </Route>
+      <Route
+        path="/"
+        element={
+          <RequireAuth>
+            <FormLayout>
+              <Outlet />
+            </FormLayout>
+          </RequireAuth>
+        }
+      >
         <Route path="/profile/edit" element={<ProfileEditPage />} />
-        <Route index element={<Navigate to="/books" replace />} />
       </Route>
       <Route path="/auth">
         <Route path="login" element={<LoginPage />} />
         <Route path="register" element={<RegisterPage />} />
       </Route>
+      <Route index element={<Navigate to="/books" replace />} />
     </Routes>
   );
 }
