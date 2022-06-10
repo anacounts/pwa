@@ -1,9 +1,0 @@
-.app-header {
-  padding: 1rem;
-  font-size: var(--font-size-lg);
-}
-
-.app-header__title {
-  color: var(--color-body);
-  text-transform: uppercase;
-}

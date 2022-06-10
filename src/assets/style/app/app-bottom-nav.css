@@ -1,23 +1,24 @@
+/* XXX Consider using a generic component */
 .app-bottom-nav {
   position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
+  height: var(--app-bottom-nav-height);
   background-color: var(--color-theme);
 }
 
 .app-bottom-nav__menu {
   display: flex;
   justify-content: space-evenly;
-  padding: 0;
-  margin: 0.5rem;
+  align-items: center;
+  height: 100%;
+  padding-left: 0;
+  margin: 0;
   list-style-type: none;
 }
 
-.app-bottom-nav__item {
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
-}
+/* .app-bottom-nav__item { } */
 
 .app-bottom-nav__item--active {
   --color: var(--color-theme-contrast);

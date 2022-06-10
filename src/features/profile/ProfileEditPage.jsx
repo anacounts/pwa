@@ -1,5 +1,7 @@
 import React, { useCallback, useState } from "react";
 import { Link } from "react-router-dom";
+import { useTitle } from "../../layouts/form/context";
+
 import Avatar from "../../components/Avatar";
 import Button from "../../components/Button";
 import Icon from "../../components/Icon";
@@ -17,6 +19,8 @@ import { UPDATE_PROFILE } from "./mutations";
 import "./ProfileEditPage.css";
 
 function ProfileEditPage() {
+  useTitle("Edit profile");
+
   const { data, loading } = useQuery(GET_PROFILE);
   const [updateProfile, { loading: updateLoading, data: updateData }] =
     useMutation(UPDATE_PROFILE, { refetchQueries: [GET_PROFILE] });

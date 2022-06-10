@@ -11,6 +11,9 @@
 # tools
 /.vscode
 
+# generated
+sprite.svg
+
 # production
 /build
 

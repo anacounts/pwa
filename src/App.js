@@ -2,12 +2,14 @@ import React from "react";
 import { Routes, Route, Navigate, useLocation, Outlet } from "react-router-dom";
 import { useAuth } from "./features/auth/context";
 
-import RootLayout from "./layouts/RootLayout";
 import LoginPage from "./features/auth/LoginPage";
 import RegisterPage from "./features/auth/RegisterPage";
 import BooksPage from "./features/books/BooksPage";
 import ProfilePage from "./features/profile/ProfilePage";
 import ProfileEditPage from "./features/profile/ProfileEditPage";
+
+import RootLayout from "./layouts/root/RootLayout";
+import FormLayout from "./layouts/form/FormLayout";
 
 import "./App.css";
 
@@ -26,13 +28,24 @@ function App() {
       >
         <Route path="/books" element={<BooksPage />} />
         <Route path="/profile" element={<ProfilePage />} />
+      </Route>
+      <Route
+        path="/"
+        element={
+          <RequireAuth>
+            <FormLayout>
+              <Outlet />
+            </FormLayout>
+          </RequireAuth>
+        }
+      >
         <Route path="/profile/edit" element={<ProfileEditPage />} />
-        <Route index element={<Navigate to="/books" replace />} />
       </Route>
       <Route path="/auth">
         <Route path="login" element={<LoginPage />} />
         <Route path="register" element={<RegisterPage />} />
       </Route>
+      <Route index element={<Navigate to="/books" replace />} />
     </Routes>
   );
 }

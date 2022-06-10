@@ -24,11 +24,13 @@
   --color-error-rgb: 211 47 47;
   --color-error: rgb(var(--color-error-rgb));
 
-  /* Links color */
+  /* ## Links color */
   --color-link-rgb: 0 0 238;
   --color-link: rgb(var(--color-link-rgb));
 
-  /* ## Components */
+  /* # Components */
+
+  /* ## Generic */
   /* Main color for the text of the body */
   --color-body: var(--color-dark);
   /* Backdrop color */
@@ -38,6 +40,10 @@
   /* Controls (input, select, button...) */
   --color-controls-background: var(--color-light);
   --color-controls-border: rgba(var(--color-dark-rgb) / 25%);
+
+  /* ## Specific */
+  /* app-bottom-nav */
+  --app-bottom-nav-height: 4rem;
 
   /* # Other properties */
 
