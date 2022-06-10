@@ -2,12 +2,13 @@ import React from "react";
 import { Routes, Route, Navigate, useLocation, Outlet } from "react-router-dom";
 import { useAuth } from "./features/auth/context";
 
-import RootLayout from "./layouts/RootLayout";
 import LoginPage from "./features/auth/LoginPage";
 import RegisterPage from "./features/auth/RegisterPage";
 import BooksPage from "./features/books/BooksPage";
 import ProfilePage from "./features/profile/ProfilePage";
 import ProfileEditPage from "./features/profile/ProfileEditPage";
+
+import RootLayout from "./layouts/root/RootLayout";
 
 import "./App.css";
 

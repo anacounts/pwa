@@ -2,8 +2,6 @@ import React, { useMemo } from "react";
 import { Link, useLocation } from "react-router-dom";
 import Icon from "../../components/Icon";
 
-import "./RootBottomNav.css";
-
 function getActiveClass(activeItem, currentItem) {
   return activeItem === currentItem ? " app-bottom-nav__item--active" : "";
 }
