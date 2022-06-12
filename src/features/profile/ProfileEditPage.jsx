@@ -45,7 +45,9 @@ function ProfileEditPage() {
     <form className="profile-edit-page" onSubmit={handleOnSubmit}>
       <ProfileAvatar src={avatarUrl} />
       <div className="profile-edit-page__save-button">
-        <Button className="mr-4">Save profile</Button>
+        <Button className="mr-4" disabled={updateLoading}>
+          Save profile
+        </Button>
         {updateLoading && <Loader size="sm" />}
         {updateData && (
           <span>
@@ -60,6 +62,7 @@ function ProfileEditPage() {
           name="displayName"
           defaultValue={displayName ?? ""}
           placeholder="John Doe"
+          disabled={updateLoading}
           required
         />
       </label>
