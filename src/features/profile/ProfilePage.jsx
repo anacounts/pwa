@@ -3,6 +3,8 @@ import Avatar from "../../components/Avatar";
 import Button from "../../components/Button";
 import { PageLoader } from "../../components/Loader";
 
+import RootLayout from "../../layouts/root/RootLayout";
+
 import { useQuery } from "@apollo/client";
 import { GET_PROFILE } from "./queries";
 
@@ -21,7 +23,7 @@ function ProfilePage() {
   } = data;
 
   return (
-    <div className="profile-page">
+    <RootLayout className="profile-page">
       <div className="profile-page__display-info mb-4">
         <Avatar src={avatarUrl} alt="Your avatar" />
         <div>
@@ -36,7 +38,7 @@ function ProfilePage() {
       </Button>
 
       {/* TODO Revoke all auth tokens */}
-    </div>
+    </RootLayout>
   );
 }
 

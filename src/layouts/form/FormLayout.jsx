@@ -1,16 +1,29 @@
 import React from "react";
-import { FormLayoutProvider } from "./context";
-import FormHeader from "./FormHeader";
+import PropTypes from "prop-types";
 
-import "./FormLayout.css";
+import Button from "../../components/Button";
+import Icon from "../../components/Icon";
 
-function FormLayout({ children }) {
+import { useNavigate } from "react-router-dom";
+
+function FormLayout({ title, children }) {
+  const navigate = useNavigate();
+
   return (
-    <FormLayoutProvider>
-      <FormHeader />
+    <>
+      <header className="app-header">
+        <Button color="invisible" onClick={() => navigate(-1)}>
+          <Icon name="arrow-left" alt="Go back" className="app-header__icon" />
+        </Button>
+        <strong className="app-header__title">{title}</strong>
+      </header>
       <main className="app-layout__main">{children}</main>
-    </FormLayoutProvider>
+    </>
   );
 }
+
+FormLayout.propTypes = {
+  title: PropTypes.string.isRequired,
+};
 
 export default FormLayout;

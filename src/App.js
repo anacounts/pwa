@@ -9,9 +9,6 @@ import NewBookPage from "./features/books/NewBookPage";
 import ProfilePage from "./features/profile/ProfilePage";
 import ProfileEditPage from "./features/profile/ProfileEditPage";
 
-import RootLayout from "./layouts/root/RootLayout";
-import FormLayout from "./layouts/form/FormLayout";
-
 import "./App.css";
 
 function App() {
@@ -21,9 +18,7 @@ function App() {
         path="/"
         element={
           <RequireAuth>
-            <RootLayout>
-              <Outlet />
-            </RootLayout>
+            <Outlet />
           </RequireAuth>
         }
       >
@@ -34,9 +29,7 @@ function App() {
         path="/"
         element={
           <RequireAuth>
-            <FormLayout>
-              <Outlet />
-            </FormLayout>
+            <Outlet />
           </RequireAuth>
         }
       >

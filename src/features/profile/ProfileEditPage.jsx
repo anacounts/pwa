@@ -1,6 +1,5 @@
 import React, { useCallback, useState } from "react";
 import { Link } from "react-router-dom";
-import { useTitle } from "../../layouts/form/context";
 
 import Avatar from "../../components/Avatar";
 import Button from "../../components/Button";
@@ -12,6 +11,8 @@ import Modal, {
   ModalTitle,
 } from "../../components/Modal";
 
+import FormLayout from "../../layouts/form/FormLayout";
+
 import { useMutation, useQuery } from "@apollo/client";
 import { GET_PROFILE } from "./queries";
 import { UPDATE_PROFILE } from "./mutations";
@@ -19,8 +20,6 @@ import { UPDATE_PROFILE } from "./mutations";
 import "./ProfileEditPage.css";
 
 function ProfileEditPage() {
-  useTitle("Edit profile");
-
   const { data, loading } = useQuery(GET_PROFILE);
   const [updateProfile, { loading: updateLoading, data: updateData }] =
     useMutation(UPDATE_PROFILE, { refetchQueries: [GET_PROFILE] });
@@ -42,52 +41,54 @@ function ProfileEditPage() {
   const { avatarUrl, displayName, email } = data.profile;
 
   return (
-    <form className="profile-edit-page" onSubmit={handleOnSubmit}>
-      <ProfileAvatar src={avatarUrl} />
-      <div className="profile-edit-page__save-button">
-        <Button className="mr-4" disabled={updateLoading}>
-          Save profile
-        </Button>
-        {updateLoading && <Loader size="sm" />}
-        {updateData && (
-          <span>
-            Profile successfully updated ! <br />
-            <Link to="/profile">Go back to your profile</Link>
-          </span>
-        )}
-      </div>
-      <label>
-        Display name
-        <input
-          name="displayName"
-          defaultValue={displayName ?? ""}
-          placeholder="John Doe"
-          disabled={updateLoading}
-          required
-        />
-      </label>
+    <FormLayout title="Edit profile">
+      <form className="profile-edit-page" onSubmit={handleOnSubmit}>
+        <ProfileAvatar src={avatarUrl} />
+        <div className="profile-edit-page__save-button">
+          <Button className="mr-4" disabled={updateLoading}>
+            Save profile
+          </Button>
+          {updateLoading && <Loader size="sm" />}
+          {updateData && (
+            <span>
+              Profile successfully updated ! <br />
+              <Link to="/profile">Go back to your profile</Link>
+            </span>
+          )}
+        </div>
+        <label>
+          Display name
+          <input
+            name="displayName"
+            defaultValue={displayName ?? ""}
+            placeholder="John Doe"
+            disabled={updateLoading}
+            required
+          />
+        </label>
 
-      <label>
-        {/* TODO On click, start email change process */}
-        Email address
-        <input
-          name="email"
-          defaultValue={email ?? ""}
-          placeholder="john.doe@example.com"
-          disabled={true}
-        />
-      </label>
+        <label>
+          {/* TODO On click, start email change process */}
+          Email address
+          <input
+            name="email"
+            defaultValue={email ?? ""}
+            placeholder="john.doe@example.com"
+            disabled={true}
+          />
+        </label>
 
-      <label>
-        {/* TODO On click, start password change process */}
-        Password
-        <input
-          type="password"
-          defaultValue="I love anacounts !"
-          disabled={true}
-        />
-      </label>
-    </form>
+        <label>
+          {/* TODO On click, start password change process */}
+          Password
+          <input
+            type="password"
+            defaultValue="I love anacounts !"
+            disabled={true}
+          />
+        </label>
+      </form>
+    </FormLayout>
   );
 }
 
