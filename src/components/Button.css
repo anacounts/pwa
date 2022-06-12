@@ -8,6 +8,11 @@
   color: var(--color-body);
 }
 
+.button:disabled {
+  background-color: var(--color-controls-background-disabled);
+  border-color: var(--color-controls-border-disabled);
+}
+
 .button--color-cta {
   color: var(--color-theme-contrast);
   background-color: var(--color-theme);

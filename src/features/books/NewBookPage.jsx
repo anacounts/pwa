@@ -34,11 +34,11 @@ function NewBookPage() {
     <form className="new-book-page" onSubmit={handleOnSubmit}>
       <label>
         Name
-        <input name="name" placeholder="New book" required />
+        <input name="name" placeholder="New book" required disabled={loading} />
       </label>
 
       <div className="new-book-page__submit-button">
-        <Button color="cta" className="mr-4">
+        <Button color="cta" className="mr-4" disabled={loading}>
           Create book
         </Button>
         {loading && <Loader size="sm" />}

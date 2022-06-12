@@ -40,6 +40,8 @@
   /* Controls (input, select, button...) */
   --color-controls-background: var(--color-light);
   --color-controls-border: rgba(var(--color-dark-rgb) / 25%);
+  --color-controls-background-disabled: rgba(var(--color-dark-rgb) / 40%);
+  --color-controls-border-disabled: rgba(var(--color-dark-rgb) / 17%);
 
   /* ## Specific */
   /* app-bottom-nav */
