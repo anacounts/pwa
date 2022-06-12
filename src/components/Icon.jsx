@@ -7,6 +7,8 @@ function Icon({ className, name, alt, ...otherProps }) {
     <svg
       className={`icon ${className ?? ""}`}
       fill="currentColor"
+      role="img"
+      aria-hidden={!alt}
       {...otherProps}
     >
       {alt && <title>{alt}</title>}
