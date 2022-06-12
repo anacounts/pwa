@@ -10,6 +10,8 @@ import {
   ListItemLabel,
 } from "../../components/list/ListItem";
 
+import RootLayout from "../../layouts/root/RootLayout";
+
 import { useQuery } from "@apollo/client";
 import { GET_BOOKS } from "./queries";
 
@@ -31,7 +33,7 @@ function BooksPage() {
   const { books } = data;
 
   return (
-    <>
+    <RootLayout>
       <List>
         <ListTitle>{books.length} books in your list</ListTitle>
         <ListScroller>
@@ -54,7 +56,7 @@ function BooksPage() {
           <Icon name="plus" alt="Add new book" />
         </Fab>
       </FabContainer>
-    </>
+    </RootLayout>
   );
 }
 

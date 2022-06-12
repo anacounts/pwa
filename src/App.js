@@ -21,9 +21,7 @@ function App() {
         path="/"
         element={
           <RequireAuth>
-            <RootLayout>
-              <Outlet />
-            </RootLayout>
+            <Outlet />
           </RequireAuth>
         }
       >
@@ -34,9 +32,7 @@ function App() {
         path="/"
         element={
           <RequireAuth>
-            <FormLayout>
-              <Outlet />
-            </FormLayout>
+            <Outlet />
           </RequireAuth>
         }
       >
