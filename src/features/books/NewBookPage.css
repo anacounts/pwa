@@ -1,0 +1,9 @@
+.new-book-page {
+  margin: 0 1rem;
+}
+
+.new-book-page__submit-button {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}

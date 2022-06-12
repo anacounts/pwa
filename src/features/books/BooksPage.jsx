@@ -1,15 +1,17 @@
 import React from "react";
+import FabContainer from "../../components/fab/FabContainer";
+import Fab from "../../components/fab/Fab";
 import { List, ListScroller, ListTitle } from "../../components/list/List";
-
-import { useQuery } from "@apollo/client";
-import { GET_BOOKS } from "./queries";
-
+import Icon from "../../components/Icon";
 import { PageLoader } from "../../components/Loader";
 import {
   ListItemAvatar,
   ListItem,
   ListItemLabel,
 } from "../../components/list/ListItem";
+
+import { useQuery } from "@apollo/client";
+import { GET_BOOKS } from "./queries";
 
 function formatBookSubtitle(members) {
   if (members.length === 1) {
@@ -47,6 +49,11 @@ function BooksPage() {
           ))}
         </ListScroller>
       </List>
+      <FabContainer>
+        <Fab to="/books/new">
+          <Icon name="plus" alt="Add new book" />
+        </Fab>
+      </FabContainer>
     </>
   );
 }
