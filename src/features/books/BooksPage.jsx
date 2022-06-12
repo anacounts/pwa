@@ -1,11 +1,7 @@
 import React from "react";
-import { List, ListScroller, ListTitle } from "../../components/list/List";
-
-import { useQuery } from "@apollo/client";
-import { GET_BOOKS } from "./queries";
-
 import FabContainer from "../../components/fab/FabContainer";
 import Fab from "../../components/fab/Fab";
+import { List, ListScroller, ListTitle } from "../../components/list/List";
 import Icon from "../../components/Icon";
 import { PageLoader } from "../../components/Loader";
 import {
@@ -13,6 +9,9 @@ import {
   ListItem,
   ListItemLabel,
 } from "../../components/list/ListItem";
+
+import { useQuery } from "@apollo/client";
+import { GET_BOOKS } from "./queries";
 
 function formatBookSubtitle(members) {
   if (members.length === 1) {
