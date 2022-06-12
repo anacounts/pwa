@@ -9,9 +9,6 @@ import NewBookPage from "./features/books/NewBookPage";
 import ProfilePage from "./features/profile/ProfilePage";
 import ProfileEditPage from "./features/profile/ProfileEditPage";
 
-import RootLayout from "./layouts/root/RootLayout";
-import FormLayout from "./layouts/form/FormLayout";
-
 import "./App.css";
 
 function App() {
