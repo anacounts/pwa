@@ -4,6 +4,7 @@ import { useAuth } from "./features/auth/context";
 
 import LoginPage from "./features/auth/LoginPage";
 import RegisterPage from "./features/auth/RegisterPage";
+import BookPage from "./features/books/BookPage";
 import BooksPage from "./features/books/BooksPage";
 import NewBookPage from "./features/books/NewBookPage";
 import ProfilePage from "./features/profile/ProfilePage";
@@ -23,24 +24,16 @@ function App() {
         }
       >
         <Route path="/books" element={<BooksPage />} />
-        <Route path="/profile" element={<ProfilePage />} />
-      </Route>
-      <Route
-        path="/"
-        element={
-          <RequireAuth>
-            <Outlet />
-          </RequireAuth>
-        }
-      >
         <Route path="/books/new" element={<NewBookPage />} />
+        <Route path="/books/:id" element={<BookPage />} />
+        <Route path="/profile" element={<ProfilePage />} />
         <Route path="/profile/edit" element={<ProfileEditPage />} />
+        <Route index element={<Navigate to="/books" replace />} />
       </Route>
       <Route path="/auth">
         <Route path="login" element={<LoginPage />} />
         <Route path="register" element={<RegisterPage />} />
       </Route>
-      <Route index element={<Navigate to="/books" replace />} />
     </Routes>
   );
 }

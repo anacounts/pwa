@@ -26,14 +26,14 @@ ListItem.propTypes = {
 
 export function ListItemAvatar({
   src = "/assets/img/book-default-avatar.png",
-  alt,
+  alt = "",
 }) {
   return <img className="list-item__avatar" src={src} alt={alt} />;
 }
 
 ListItemAvatar.propTypes = {
   src: PropTypes.string,
-  alt: PropTypes.string.isRequired,
+  alt: PropTypes.string,
 };
 
 export function ListItemLabel({ children }) {

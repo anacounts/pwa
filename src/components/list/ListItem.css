@@ -3,6 +3,7 @@
 .list-item {
   display: flex;
   align-items: center;
+  gap: 1rem;
   padding: var(--spacing-side);
 }
 
@@ -22,7 +23,6 @@
 .list-item__avatar {
   width: 2rem;
   height: 2rem;
-  margin-right: 1rem;
   border-radius: var(--radius-full);
 }
 
