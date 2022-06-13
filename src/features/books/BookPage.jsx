@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useCallback } from "react";
 
 import { Accordion, AccordionItem } from "../../components/Accordion";
 import Button from "../../components/Button";
+import Dropdown from "../../components/Dropdown";
 import Icon from "../../components/Icon";
 import { List, ListScroller } from "../../components/list/List";
 import {
@@ -12,18 +13,30 @@ import {
 
 import { useNavigate, useParams } from "react-router-dom";
 
-import { useQuery } from "@apollo/client";
-import { GET_BOOK } from "./queries";
+import { useMutation, useQuery } from "@apollo/client";
+import { GET_BOOK, GET_BOOKS } from "./queries";
+import { DELETE_BOOK } from "./mutations";
 
 function BookPage() {
   const navigate = useNavigate();
+
+  const [deleteBook, { loading: deleteLoading, error: deleteError }] =
+    useMutation(DELETE_BOOK, { updateQueries: [GET_BOOKS] });
 
   const { id } = useParams();
 
   const { data, loading, errors } = useQuery(GET_BOOK, { variables: { id } });
 
+  const handleDelete = useCallback(async () => {
+    await deleteBook({ variables: { id } });
+
+    navigate(-1);
+  }, [deleteBook, id, navigate]);
+
+  // TODO
   if (loading) return <></>;
   if (errors) return <></>;
+  if (deleteError) return <></>;
 
   const { name, members } = data.book;
 
@@ -34,13 +47,21 @@ function BookPage() {
           <Icon name="arrow-left" alt="Go back" className="app-header__icon" />
         </Button>
         <strong className="app-header__title">Book</strong>
-        <Button color="invisible">
-          <Icon
-            name="dots-vertical"
-            alt="Go back"
-            className="app-header__icon"
-          />
-        </Button>
+        <Dropdown
+          toggle={<Icon name="dots-vertical" className="app-header__icon" />}
+          menu={
+            <List element="menu">
+              <ListItem
+                className={deleteLoading ? "text-disabled" : "text-error"}
+                onClick={handleDelete}
+                role="button"
+              >
+                <Icon name="delete" />
+                <ListItemLabel>Delete</ListItemLabel>
+              </ListItem>
+            </List>
+          }
+        />
       </header>
       <main className="app-layout__main">
         <Accordion>

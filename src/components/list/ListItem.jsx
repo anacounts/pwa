@@ -16,8 +16,12 @@ function maybeWrapChildrenInLink(children, to) {
   return children;
 }
 
-export function ListItem({ children, to }) {
-  return <li className="list-item">{maybeWrapChildrenInLink(children, to)}</li>;
+export function ListItem({ to, className = "", children, ...itemProps }) {
+  return (
+    <li className={`list-item ${className}`} {...itemProps}>
+      {maybeWrapChildrenInLink(children, to)}
+    </li>
+  );
 }
 
 ListItem.propTypes = {
