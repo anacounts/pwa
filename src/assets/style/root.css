@@ -16,7 +16,7 @@
   --color-theme-contrast-rgb: var(--color-light-rgb);
   --color-theme-contrast: var(--color-light);
 
-  --color-support-rgb: 178, 6, 0;
+  --color-support-rgb: 178 6 0;
   --color-support: rgb(var(--color-support));
   --color-theme-contrast-rgb: var(--color-light-rgb);
   --color-theme-contrast: var(--color-light);
