@@ -16,13 +16,16 @@
   --color-theme-contrast-rgb: var(--color-light-rgb);
   --color-theme-contrast: var(--color-light);
 
-  --color-support-rgb: 178, 6, 0;
+  --color-support-rgb: 178 6 0;
   --color-support: rgb(var(--color-support));
   --color-theme-contrast-rgb: var(--color-light-rgb);
   --color-theme-contrast: var(--color-light);
 
   --color-error-rgb: 211 47 47;
   --color-error: rgb(var(--color-error-rgb));
+
+  --color-disabled-rgb: 203 203 203;
+  --color-disabled: rgb(var(--color-disabled-rgb));
 
   /* ## Links color */
   --color-link-rgb: 0 0 238;
@@ -68,6 +71,7 @@
 
   /* ## Font size */
   --font-size-base: 1rem;
+  --font-size-md: 1.5rem;
   --font-size-lg: 2rem;
   --font-size-xl: 3rem;
 
@@ -92,4 +96,7 @@
   --transition-duration: 0.3s;
 
   --transition-timing: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* ## Z index */
+  --z-index-dropdown: 10;
 }

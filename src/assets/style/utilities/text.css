@@ -1,3 +1,7 @@
 .text-error {
   color: var(--color-error);
 }
+
+.text-disabled {
+  color: var(--color-disabled);
+}

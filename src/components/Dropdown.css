@@ -1,0 +1,27 @@
+.dropdown {
+  position: relative;
+}
+
+/* .dropdown--open */
+
+.dropdown--open .dropdown__menu {
+  display: initial;
+}
+
+.dropdown__toggle {
+  display: contents;
+}
+
+.dropdown__menu {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: var(--color-background);
+  box-shadow: var(--shadow);
+  font-size: var(--font-size-base);
+  text-transform: uppercase;
+  z-index: var(--z-index-dropdown);
+}

@@ -38,7 +38,7 @@ function BooksPage() {
         <ListTitle>{books.length} books in your list</ListTitle>
         <ListScroller>
           {books.map(({ id, name, members, avatarSrc }) => (
-            <ListItem key={id} to={`/book/${id}`}>
+            <ListItem key={id} to={`/books/${id}`}>
               <ListItemAvatar src={avatarSrc} alt=""></ListItemAvatar>
               <ListItemLabel>
                 <span className="list-item__primary-line">{name}</span>
