@@ -92,6 +92,7 @@ function BookPage() {
                     </ListItemLabel>
                   </ListItem>
                 ))}
+                {/* TODO Display only if user has right to add new members */}
                 <ListItem to={`/books/${id}/invite`} role="button">
                   <Icon name="account-plus" />
                   <ListItemLabel>Add a new member</ListItemLabel>
