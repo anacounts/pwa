@@ -7,6 +7,7 @@ import RegisterPage from "./features/auth/RegisterPage";
 import BookPage from "./features/books/BookPage";
 import BooksPage from "./features/books/BooksPage";
 import NewBookPage from "./features/books/NewBookPage";
+import InvitationsPage from "./features/members/InvitationsPage";
 import ProfilePage from "./features/profile/ProfilePage";
 import ProfileEditPage from "./features/profile/ProfileEditPage";
 
@@ -26,6 +27,7 @@ function App() {
         <Route path="/books" element={<BooksPage />} />
         <Route path="/books/new" element={<NewBookPage />} />
         <Route path="/books/:id" element={<BookPage />} />
+        <Route path="/books/:id/invite" element={<InvitationsPage />} />
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/profile/edit" element={<ProfileEditPage />} />
         <Route index element={<Navigate to="/books" replace />} />

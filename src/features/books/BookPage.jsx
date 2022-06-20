@@ -44,19 +44,19 @@ function BookPage() {
   return (
     <SimpleLayout
       title="Book"
-          menu={
-            <List element="menu">
-              {/* TODO Add an alert when clicking here */}
-              <ListItem
-                className={deleteLoading ? "text-disabled" : "text-error"}
-                onClick={handleDelete}
-                role="button"
-              >
-                <Icon name="delete" />
-                <ListItemLabel>Delete</ListItemLabel>
-              </ListItem>
-            </List>
-          }
+      menu={
+        <List element="menu">
+          {/* TODO Add an alert when clicking here */}
+          <ListItem
+            className={deleteLoading ? "text-disabled" : "text-error"}
+            onClick={handleDelete}
+            role="button"
+          >
+            <Icon name="delete" />
+            <ListItemLabel>Delete</ListItemLabel>
+          </ListItem>
+        </List>
+      }
     >
       <main className="app-layout__main">
         <Accordion>
@@ -92,6 +92,10 @@ function BookPage() {
                     </ListItemLabel>
                   </ListItem>
                 ))}
+                <ListItem to={`/books/${id}/invite`} role="button">
+                  <Icon name="account-plus" />
+                  <ListItemLabel>Add a new member</ListItemLabel>
+                </ListItem>
               </ListScroller>
             </List>
           </AccordionItem>
