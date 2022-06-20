@@ -51,6 +51,7 @@ function BookPage() {
           toggle={<Icon name="dots-vertical" className="app-header__icon" />}
           menu={
             <List element="menu">
+              {/* TODO Add an alert when clicking here */}
               <ListItem
                 className={deleteLoading ? "text-disabled" : "text-error"}
                 onClick={handleDelete}
