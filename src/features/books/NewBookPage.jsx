@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Button from "../../components/Button";
 import Loader from "../../components/Loader";
 
-import FormLayout from "../../layouts/form/FormLayout";
+import SimpleLayout from "../../layouts/SimpleLayout";
 
 import { useMutation } from "@apollo/client";
 import { CREATE_BOOK } from "./mutations";
@@ -29,7 +29,7 @@ function NewBookPage() {
   );
 
   return (
-    <FormLayout title="New book">
+    <SimpleLayout title="New book">
       <form className="new-book-page" onSubmit={handleOnSubmit}>
         <label>
           Name
@@ -55,7 +55,7 @@ function NewBookPage() {
           )}
         </div>
       </form>
-    </FormLayout>
+    </SimpleLayout>
   );
 }
 

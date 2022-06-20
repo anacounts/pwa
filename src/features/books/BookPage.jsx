@@ -1,8 +1,8 @@
 import React, { useCallback } from "react";
 
+import SimpleLayout from "../../layouts/SimpleLayout";
+
 import { Accordion, AccordionItem } from "../../components/Accordion";
-import Button from "../../components/Button";
-import Dropdown from "../../components/Dropdown";
 import Icon from "../../components/Icon";
 import { List, ListScroller } from "../../components/list/List";
 import {
@@ -20,6 +20,7 @@ import { DELETE_BOOK } from "./mutations";
 function BookPage() {
   const navigate = useNavigate();
 
+  // TODO Maybe move menu to its own component
   const [deleteBook, { loading: deleteLoading, error: deleteError }] =
     useMutation(DELETE_BOOK, { updateQueries: [GET_BOOKS] });
 
@@ -41,28 +42,22 @@ function BookPage() {
   const { name, members } = data.book;
 
   return (
-    <>
-      <header className="app-header">
-        <Button color="invisible" onClick={() => navigate(-1)}>
-          <Icon name="arrow-left" alt="Go back" className="app-header__icon" />
-        </Button>
-        <strong className="app-header__title">Book</strong>
-        <Dropdown
-          toggle={<Icon name="dots-vertical" className="app-header__icon" />}
-          menu={
-            <List element="menu">
-              <ListItem
-                className={deleteLoading ? "text-disabled" : "text-error"}
-                onClick={handleDelete}
-                role="button"
-              >
-                <Icon name="delete" />
-                <ListItemLabel>Delete</ListItemLabel>
-              </ListItem>
-            </List>
-          }
-        />
-      </header>
+    <SimpleLayout
+      title="Book"
+      menu={
+        <List element="menu">
+          {/* TODO Add an alert when clicking here */}
+          <ListItem
+            className={deleteLoading ? "text-disabled" : "text-error"}
+            onClick={handleDelete}
+            role="button"
+          >
+            <Icon name="delete" />
+            <ListItemLabel>Delete</ListItemLabel>
+          </ListItem>
+        </List>
+      }
+    >
       <main className="app-layout__main">
         <Accordion>
           <AccordionItem title="Book details" defaultOpen>
@@ -76,6 +71,7 @@ function BookPage() {
                     <span className="list-item__secondary-line">{name}</span>
                   </ListItemLabel>
                 </ListItem>
+                {/* TODO Add "created at" information, based on "insertedAt" field */}
               </ListScroller>
             </List>
           </AccordionItem>
@@ -96,12 +92,17 @@ function BookPage() {
                     </ListItemLabel>
                   </ListItem>
                 ))}
+                {/* TODO Display only if user has right to add new members */}
+                <ListItem to={`/books/${id}/invite`} role="button">
+                  <Icon name="account-plus" />
+                  <ListItemLabel>Add a new member</ListItemLabel>
+                </ListItem>
               </ListScroller>
             </List>
           </AccordionItem>
         </Accordion>
       </main>
-    </>
+    </SimpleLayout>
   );
 }
 
