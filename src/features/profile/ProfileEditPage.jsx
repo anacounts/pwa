@@ -11,7 +11,7 @@ import Modal, {
   ModalTitle,
 } from "../../components/Modal";
 
-import FormLayout from "../../layouts/form/FormLayout";
+import SimpleLayout from "../../layouts/SimpleLayout";
 
 import { useMutation, useQuery } from "@apollo/client";
 import { GET_PROFILE } from "./queries";
@@ -41,7 +41,7 @@ function ProfileEditPage() {
   const { avatarUrl, displayName, email } = data.profile;
 
   return (
-    <FormLayout title="Edit profile">
+    <SimpleLayout title="Edit profile">
       <form className="profile-edit-page" onSubmit={handleOnSubmit}>
         <ProfileAvatar src={avatarUrl} />
         <div className="profile-edit-page__save-button">
@@ -88,7 +88,7 @@ function ProfileEditPage() {
           />
         </label>
       </form>
-    </FormLayout>
+    </SimpleLayout>
   );
 }
 

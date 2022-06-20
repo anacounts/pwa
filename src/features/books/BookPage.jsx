@@ -1,8 +1,8 @@
 import React, { useCallback } from "react";
 
+import SimpleLayout from "../../layouts/SimpleLayout";
+
 import { Accordion, AccordionItem } from "../../components/Accordion";
-import Button from "../../components/Button";
-import Dropdown from "../../components/Dropdown";
 import Icon from "../../components/Icon";
 import { List, ListScroller } from "../../components/list/List";
 import {
@@ -42,14 +42,8 @@ function BookPage() {
   const { name, members } = data.book;
 
   return (
-    <>
-      <header className="app-header">
-        <Button color="invisible" onClick={() => navigate(-1)}>
-          <Icon name="arrow-left" alt="Go back" className="app-header__icon" />
-        </Button>
-        <strong className="app-header__title">Book</strong>
-        <Dropdown
-          toggle={<Icon name="dots-vertical" className="app-header__icon" />}
+    <SimpleLayout
+      title="Book"
           menu={
             <List element="menu">
               {/* TODO Add an alert when clicking here */}
@@ -63,8 +57,7 @@ function BookPage() {
               </ListItem>
             </List>
           }
-        />
-      </header>
+    >
       <main className="app-layout__main">
         <Accordion>
           <AccordionItem title="Book details" defaultOpen>
@@ -104,7 +97,7 @@ function BookPage() {
           </AccordionItem>
         </Accordion>
       </main>
-    </>
+    </SimpleLayout>
   );
 }
 
