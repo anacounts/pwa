@@ -20,6 +20,7 @@ import { DELETE_BOOK } from "./mutations";
 function BookPage() {
   const navigate = useNavigate();
 
+  // TODO Maybe move menu to its own component
   const [deleteBook, { loading: deleteLoading, error: deleteError }] =
     useMutation(DELETE_BOOK, { updateQueries: [GET_BOOKS] });
 
@@ -77,6 +78,7 @@ function BookPage() {
                     <span className="list-item__secondary-line">{name}</span>
                   </ListItemLabel>
                 </ListItem>
+                {/* TODO Add "created at" information, based on "insertedAt" field */}
               </ListScroller>
             </List>
           </AccordionItem>
