@@ -49,6 +49,11 @@ input {
   font-size: var(--font-size-base);
 }
 
+input:disabled {
+  color: var(--color-disabled);
+  border-color: var(--color-disabled);
+}
+
 input:focus {
   outline-color: var(--color-theme);
 }
