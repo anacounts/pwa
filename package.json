@@ -23,6 +23,9 @@
     "eject": "react-scripts eject",
     "sprite:generate": "svg-sprite --dest=public/assets/icons --symbol --symbol-dest=. --symbol-sprite=sprite.svg 'src/assets/icons/*.svg'"
   },
+  "styles": [
+  "node_modules/material-design-icons/iconfont/material-icons.css"
+  ],
   "eslintConfig": {
     "extends": [
       "react-app",
