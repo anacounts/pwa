@@ -1,4 +1,4 @@
 .app-layout__main {
   /* Don't allow content in place of the bottom navigation */
-  padding-bottom: var(--app-bottom-nav-height);
+  padding-bottom: var(--bottom-nav-height);
 }

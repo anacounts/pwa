@@ -3,7 +3,7 @@ import Avatar from "../../components/Avatar";
 import Button from "../../components/Button";
 import { PageLoader } from "../../components/Loader";
 
-import RootLayout from "../../layouts/root/RootLayout";
+import RootLayout from "../../layouts/RootLayout";
 
 import { useQuery } from "@apollo/client";
 import { GET_PROFILE } from "./queries";

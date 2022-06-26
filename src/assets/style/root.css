@@ -47,8 +47,8 @@
   --color-controls-border-disabled: rgba(var(--color-dark-rgb) / 17%);
 
   /* ## Specific */
-  /* app-bottom-nav */
-  --app-bottom-nav-height: 4rem;
+  /* BottomNav */
+  --bottom-nav-height: 4rem;
 
   /* # Other properties */
 
