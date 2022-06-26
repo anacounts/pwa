@@ -3,6 +3,7 @@ import React, { useCallback } from "react";
 import SimpleLayout from "../../layouts/SimpleLayout";
 
 import { Accordion, AccordionItem } from "../../components/Accordion";
+import { BookBottomNav } from "./common";
 import Icon from "../../components/Icon";
 import { List, ListScroller } from "../../components/list/List";
 import {
@@ -10,6 +11,7 @@ import {
   ListItemAvatar,
   ListItemLabel,
 } from "../../components/list/ListItem";
+import { PageLoader } from "../../components/Loader";
 
 import { useNavigate, useParams } from "react-router-dom";
 
@@ -17,7 +19,7 @@ import { useMutation, useQuery } from "@apollo/client";
 import { GET_BOOK, GET_BOOKS } from "./queries";
 import { DELETE_BOOK } from "./mutations";
 
-function BookPage() {
+function BookDetailsPage() {
   const navigate = useNavigate();
 
   // TODO Maybe move menu to its own component
@@ -26,7 +28,7 @@ function BookPage() {
 
   const { id } = useParams();
 
-  const { data, loading, errors } = useQuery(GET_BOOK, { variables: { id } });
+  const { data, loading, error } = useQuery(GET_BOOK, { variables: { id } });
 
   const handleDelete = useCallback(async () => {
     await deleteBook({ variables: { id } });
@@ -34,10 +36,11 @@ function BookPage() {
     navigate(-1);
   }, [deleteBook, id, navigate]);
 
+  if (loading) return <PageLoader />;
+
   // TODO
-  if (loading) return <></>;
-  if (errors) return <></>;
-  if (deleteError) return <></>;
+  if (error) throw error;
+  if (deleteError) throw deleteError;
 
   const { name, members } = data.book;
 
@@ -102,8 +105,9 @@ function BookPage() {
           </AccordionItem>
         </Accordion>
       </main>
+      <BookBottomNav />
     </SimpleLayout>
   );
 }
 
-export default BookPage;
+export default BookDetailsPage;

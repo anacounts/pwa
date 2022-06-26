@@ -4,7 +4,7 @@ import SimpleLayout from "../../layouts/SimpleLayout";
 
 import Button from "../../components/Button";
 import Icon from "../../components/Icon";
-import Loader from "../../components/Loader";
+import Loader, { PageLoader } from "../../components/Loader";
 import { List, ListScroller } from "../../components/list/List";
 import {
   ListItem,
@@ -78,9 +78,10 @@ function InviteList() {
 
   const { data, loading, error } = useQuery(GET_BOOK, { variables: { id } });
 
+  if (loading) return <PageLoader />;
+
   // TODO
-  if (loading) return <></>;
-  if (error) return <></>;
+  if (error) throw error;
 
   const { members } = data.book;
 

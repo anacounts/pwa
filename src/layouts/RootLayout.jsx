@@ -2,7 +2,6 @@ import React, { useMemo } from "react";
 import PropTypes from "prop-types";
 
 import { BottomNav, BottomNavButton } from "../components/BottomNav";
-import Icon from "../components/Icon";
 
 import { useLocation } from "react-router-dom";
 
@@ -24,14 +23,14 @@ function RootLayout({ className = "", children }) {
       <main className={`app-layout__main ${className}`}>{children}</main>
       <BottomNav>
         <BottomNavButton
-          label="Books"
           icon="book"
+          label="Books"
           to="/books"
           active={activeItem === "books"}
         />
         <BottomNavButton
-          label="Profile"
           icon="account"
+          label="Profile"
           to="/profile"
           active={activeItem === "profile"}
         />

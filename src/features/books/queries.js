@@ -3,14 +3,18 @@ import { gql } from "@apollo/client";
 export const GET_BOOK = gql`
   query GetBook($id: ID!) {
     book(id: $id) {
+      id
       name
       insertedAt
 
       members {
         id
-        displayName
-        avatarUrl
         role
+
+        user {
+          displayName
+          avatarUrl
+        }
       }
     }
   }

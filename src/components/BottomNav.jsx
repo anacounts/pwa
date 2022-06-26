@@ -14,12 +14,12 @@ export function BottomNav({ children }) {
   );
 }
 
-export function BottomNavButton({ to, active = false, icon, label }) {
+export function BottomNavButton({ icon, label, to, active = false }) {
   const activeClass = active ? "bottom-nav__item--active" : "";
 
   return (
     <li className={`bottom-nav__item ${activeClass}`}>
-      <Link to={to} className="bottom-nav__link">
+      <Link to={to} className="bottom-nav__link" replace>
         <Icon name={icon} className="bottom-nav__item-icon" />
         <span>{label}</span>
       </Link>
@@ -28,8 +28,8 @@ export function BottomNavButton({ to, active = false, icon, label }) {
 }
 
 BottomNavButton.propTypes = {
-  label: PropTypes.string.isRequired,
   icon: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired,
   to: PropTypes.string.isRequired,
   active: PropTypes.bool,
 };
