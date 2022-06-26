@@ -81,17 +81,15 @@ function BookDetailsPage() {
           <AccordionItem title={`${members.length} members`}>
             <List>
               <ListScroller>
-                {members.map((member) => (
-                  <ListItem key={member.id}>
-                    <ListItemAvatar src={member.avatarUrl} />
+                {members.map(({ id, role, user }) => (
+                  <ListItem key={id}>
+                    <ListItemAvatar src={user.avatarUrl} />
                     <ListItemLabel>
                       <span className="list-item__primary-line">
-                        {member.displayName}
+                        {user.displayName}
                       </span>
                       <br />
-                      <span className="list-item__secondary-line">
-                        {member.role}
-                      </span>
+                      <span className="list-item__secondary-line">{role}</span>
                     </ListItemLabel>
                   </ListItem>
                 ))}
