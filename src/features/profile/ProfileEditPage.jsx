@@ -71,7 +71,8 @@ function ProfileEditPage() {
           {/* TODO On click, start email change process */}
           Email address
           <input
-            name="email"
+            type="email"
+            autoComplete="email"
             defaultValue={email ?? ""}
             placeholder="john.doe@example.com"
             disabled={true}
@@ -83,6 +84,7 @@ function ProfileEditPage() {
           Password
           <input
             type="password"
+            autoComplete="current-password"
             defaultValue="I love anacounts !"
             disabled={true}
           />
