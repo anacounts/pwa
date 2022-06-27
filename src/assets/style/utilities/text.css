@@ -1,5 +1,15 @@
+/* # Alignment */
+.text-right {
+  text-align: right;
+}
+
+/* # Color */
 .text-error {
   color: var(--color-error);
+}
+
+.text-success {
+  color: var(--color-success);
 }
 
 .text-disabled {

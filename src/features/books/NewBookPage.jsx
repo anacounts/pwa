@@ -50,7 +50,9 @@ function NewBookPage() {
           {data && (
             <span>
               Book successfully created ! <br />
-              <Link to={`/books/${data.createBook.id}`}>Go to your book !</Link>
+              <Link to={`/books/${data.createBook.id}`} replace>
+                Go to your book !
+              </Link>
             </span>
           )}
         </div>

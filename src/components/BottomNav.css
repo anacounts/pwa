@@ -1,14 +1,13 @@
-/* XXX Consider using a generic component */
-.app-bottom-nav {
+.bottom-nav {
   position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
-  height: var(--app-bottom-nav-height);
+  height: var(--bottom-nav-height);
   background-color: var(--color-theme);
 }
 
-.app-bottom-nav__menu {
+.bottom-nav__menu {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
@@ -18,17 +17,17 @@
   list-style-type: none;
 }
 
-/* .app-bottom-nav__item { } */
+/* .bottom-nav__item { } */
 
-.app-bottom-nav__item--active {
+.bottom-nav__item--active {
   --color: var(--color-theme-contrast);
 }
 
-.app-bottom-nav__link {
+.bottom-nav__link {
   color: var(--color, rgba(var(--color-theme-contrast-rgb) / 50%));
 }
 
-.app-bottom-nav__item-icon {
+.bottom-nav__item-icon {
   display: block;
   --size: var(--font-size-lg);
   margin-left: auto;

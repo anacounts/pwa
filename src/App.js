@@ -4,12 +4,17 @@ import { useAuth } from "./features/auth/context";
 
 import LoginPage from "./features/auth/LoginPage";
 import RegisterPage from "./features/auth/RegisterPage";
-import BookPage from "./features/books/BookPage";
+import BookDetailsPage from "./features/books/BookDetailsPage";
 import BooksPage from "./features/books/BooksPage";
 import NewBookPage from "./features/books/NewBookPage";
 import InvitationsPage from "./features/members/InvitationsPage";
 import ProfilePage from "./features/profile/ProfilePage";
 import ProfileEditPage from "./features/profile/ProfileEditPage";
+import {
+  NewMoneyTransferPage,
+  EditMoneyTransferPage,
+} from "./features/transfers/MoneyTransferFormPage";
+import MoneyTransfersPage from "./features/transfers/MoneyTransfersPage";
 
 import "./App.css";
 
@@ -26,8 +31,17 @@ function App() {
       >
         <Route path="/books" element={<BooksPage />} />
         <Route path="/books/new" element={<NewBookPage />} />
-        <Route path="/books/:id" element={<BookPage />} />
-        <Route path="/books/:id/invite" element={<InvitationsPage />} />
+        <Route path="/books/:bookId/">
+          <Route path="details" element={<BookDetailsPage />} />
+          <Route path="transfers" element={<MoneyTransfersPage />} />
+          <Route path="transfers/new" element={<NewMoneyTransferPage />} />
+          <Route
+            path="transfers/:transferId"
+            element={<EditMoneyTransferPage />}
+          />
+          <Route path="invite" element={<InvitationsPage />} />
+          <Route index element={<Navigate to="details" replace />} />
+        </Route>
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/profile/edit" element={<ProfileEditPage />} />
         <Route index element={<Navigate to="/books" replace />} />

@@ -23,6 +23,8 @@
 
   --color-error-rgb: 211 47 47;
   --color-error: rgb(var(--color-error-rgb));
+  --color-success-rgb: 76 175 80;
+  --color-success: rgb(var(--color-success-rgb));
 
   --color-disabled-rgb: 203 203 203;
   --color-disabled: rgb(var(--color-disabled-rgb));
@@ -47,8 +49,8 @@
   --color-controls-border-disabled: rgba(var(--color-dark-rgb) / 17%);
 
   /* ## Specific */
-  /* app-bottom-nav */
-  --app-bottom-nav-height: 4rem;
+  /* BottomNav */
+  --bottom-nav-height: 4rem;
 
   /* # Other properties */
 

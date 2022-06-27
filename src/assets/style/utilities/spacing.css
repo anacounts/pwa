@@ -1,9 +1,28 @@
 .mr-4 {
   margin-right: 1rem;
 }
+
+.mb-0 {
+  margin-bottom: 0;
+}
 .mb-4 {
   margin-bottom: 1rem;
 }
+
 .ml-4 {
   margin-left: 1rem;
+}
+
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+.mx-4 {
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.py-2 {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
 }

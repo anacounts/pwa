@@ -4,7 +4,7 @@ import SimpleLayout from "../../layouts/SimpleLayout";
 
 import Button from "../../components/Button";
 import Icon from "../../components/Icon";
-import Loader from "../../components/Loader";
+import Loader, { PageLoader } from "../../components/Loader";
 import { List, ListScroller } from "../../components/list/List";
 import {
   ListItem,
@@ -32,10 +32,10 @@ function InvitationsPage() {
 export default InvitationsPage;
 
 function InviteForm() {
-  const { id: bookId } = useParams();
+  const { bookId } = useParams();
 
   const [inviteUser, { loading, error }] = useMutation(INVITE_USER, {
-    updateQueries: [GET_BOOK, GET_BOOKS],
+    refetchQueries: [GET_BOOK, GET_BOOKS],
   });
 
   const handleSubmit = useCallback(
@@ -74,28 +74,31 @@ function InviteForm() {
 }
 
 function InviteList() {
-  const { id } = useParams();
+  const { bookId } = useParams();
 
-  const { data, loading, error } = useQuery(GET_BOOK, { variables: { id } });
+  const { data, loading, error } = useQuery(GET_BOOK, {
+    variables: { id: bookId },
+  });
+
+  if (loading) return <PageLoader />;
 
   // TODO
-  if (loading) return <></>;
-  if (error) return <></>;
+  if (error) throw error;
 
   const { members } = data.book;
 
   return (
     <List>
       <ListScroller>
-        {members.map((member) => (
-          <ListItem key={member.id}>
-            <ListItemAvatar src={member.avatarUrl} />
+        {members.map(({ id, role, user }) => (
+          <ListItem key={id}>
+            <ListItemAvatar src={user.avatarUrl} />
             <ListItemLabel>
               <span className="list-item__primary-line">
-                {member.displayName}
+                {user.displayName}
               </span>
               <br />
-              <span className="list-item__secondary-line">{member.role}</span>
+              <span className="list-item__secondary-line">{role}</span>
             </ListItemLabel>
             <Icon name="check" />
           </ListItem>

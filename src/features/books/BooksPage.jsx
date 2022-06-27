@@ -10,7 +10,7 @@ import {
   ListItemLabel,
 } from "../../components/list/ListItem";
 
-import RootLayout from "../../layouts/root/RootLayout";
+import RootLayout from "../../layouts/RootLayout";
 
 import { useQuery } from "@apollo/client";
 import { GET_BOOKS } from "./queries";
