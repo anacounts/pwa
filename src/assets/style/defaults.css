@@ -35,7 +35,8 @@ label {
   margin-bottom: 1rem;
 }
 
-input {
+input,
+select {
   display: block;
   margin-top: 0.25rem;
   margin-bottom: 0.25rem;
@@ -49,11 +50,13 @@ input {
   font-size: var(--font-size-base);
 }
 
-input:disabled {
+input:disabled,
+select:disabled {
   color: var(--color-disabled);
   border-color: var(--color-disabled);
 }
 
-input:focus {
+input:focus,
+select:focus {
   outline-color: var(--color-theme);
 }

@@ -11,6 +11,7 @@ import InvitationsPage from "./features/members/InvitationsPage";
 import ProfilePage from "./features/profile/ProfilePage";
 import ProfileEditPage from "./features/profile/ProfileEditPage";
 import MoneyTransfersPage from "./features/transfers/MoneyTransfersPage";
+import NewMoneyTransferPage from "./features/transfers/NewMoneyTransferPage";
 
 import "./App.css";
 
@@ -30,6 +31,7 @@ function App() {
         <Route path="/books/:id/">
           <Route path="details" element={<BookDetailsPage />} />
           <Route path="transfers" element={<MoneyTransfersPage />} />
+          <Route path="transfers/new" element={<NewMoneyTransferPage />} />
           <Route path="invite" element={<InvitationsPage />} />
           <Route index element={<Navigate to="details" replace />} />
         </Route>

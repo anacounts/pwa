@@ -28,6 +28,26 @@ function transferIconAndClassForType(type) {
 function MoneyTransfersPage() {
   const { id } = useParams();
 
+  return (
+    <SimpleLayout title="Transfers">
+      <main className="app-layout__main">
+        <TransfersList />
+
+        <FabContainer>
+          <Fab to={`/books/${id}/transfers/new`}>
+            <Icon name="plus" alt="Add new transfer" />
+          </Fab>
+        </FabContainer>
+      </main>
+
+      <BookBottomNav />
+    </SimpleLayout>
+  );
+}
+
+function TransfersList() {
+  const { id } = useParams();
+
   const { data, loading, error } = useQuery(FIND_MONEY_TRANSFERS, {
     variables: { bookId: id },
   });
@@ -40,57 +60,38 @@ function MoneyTransfersPage() {
   const { moneyTransfers } = data.book;
 
   return (
-    <SimpleLayout title="Transfers">
-      <main className="app-layout__main">
-        <List>
-          <ListScroller>
-            {moneyTransfers.map(
-              ({
-                id,
-                label,
-                amount: rawAmount,
-                type,
-                date: rawDate,
-                holder,
-              }) => {
-                const amount = money.parse(rawAmount);
-                const [iconName, className] = transferIconAndClassForType(type);
+    <List>
+      <ListScroller>
+        {moneyTransfers.map(
+          ({ id, label, amount: rawAmount, type, date: rawDate, holder }) => {
+            const amount = money.parse(rawAmount);
+            const [iconName, className] = transferIconAndClassForType(type);
 
-                return (
-                  <ListItem key={id}>
-                    <Icon className={className} name={iconName} />
-                    <ListItemLabel>
-                      <span className={`list-item__primary-line ${className}`}>
-                        {label}
-                      </span>
-                      <br />
-                      <span className="list-item__secondary-line">
-                        {holder.user.displayName}
-                      </span>
-                    </ListItemLabel>
-                    <div className="text-right">
-                      <span className={`font-bold ${className}`}>
-                        {money.format(amount)}
-                      </span>
-                      <br />
-                      {date.formatShortDate(new Date(rawDate))}
-                    </div>
-                  </ListItem>
-                );
-              }
-            )}
-          </ListScroller>
-        </List>
-
-        <FabContainer>
-          <Fab to={`/books/${id}/transfers/new`}>
-            <Icon name="plus" alt="Add new transfer" />
-          </Fab>
-        </FabContainer>
-      </main>
-
-      <BookBottomNav />
-    </SimpleLayout>
+            return (
+              <ListItem key={id}>
+                <Icon className={className} name={iconName} />
+                <ListItemLabel>
+                  <span className={`list-item__primary-line ${className}`}>
+                    {label}
+                  </span>
+                  <br />
+                  <span className="list-item__secondary-line">
+                    {holder.user.displayName}
+                  </span>
+                </ListItemLabel>
+                <div className="text-right">
+                  <span className={`font-bold ${className}`}>
+                    {money.format(amount)}
+                  </span>
+                  <br />
+                  {date.formatShortDate(new Date(rawDate))}
+                </div>
+              </ListItem>
+            );
+          }
+        )}
+      </ListScroller>
+    </List>
   );
 }
 

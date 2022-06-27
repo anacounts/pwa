@@ -5,19 +5,23 @@ import "./List.css";
 
 // # Wrapper
 
-export function List({ children }) {
-  return <div className="list">{children}</div>;
+export function List({ className = "", children }) {
+  return <div className={`list ${className}`}>{children}</div>;
 }
 
 List.propTypes = {
-  component: PropTypes.object,
+  className: PropTypes.string,
 };
 
 // # Title
 
-export function ListTitle({ children }) {
-  return <strong className="list__title">{children}</strong>;
+export function ListTitle({ className = "", children }) {
+  return <strong className={`list__title ${className}`}>{children}</strong>;
 }
+
+ListTitle.propTypes = {
+  className: PropTypes.string,
+};
 
 // # Scroller
 
@@ -30,5 +34,5 @@ export function ListScroller({ element: Element = "ul", children }) {
 }
 
 ListScroller.propTypes = {
-  component: PropTypes.object,
+  element: PropTypes.element,
 };

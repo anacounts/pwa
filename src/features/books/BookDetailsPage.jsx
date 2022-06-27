@@ -24,11 +24,9 @@ function BookDetailsPage() {
 
   // TODO Maybe move menu to its own component
   const [deleteBook, { loading: deleteLoading, error: deleteError }] =
-    useMutation(DELETE_BOOK, { updateQueries: [GET_BOOKS] });
+    useMutation(DELETE_BOOK, { refetchQueries: [GET_BOOKS] });
 
   const { id } = useParams();
-
-  const { data, loading, error } = useQuery(GET_BOOK, { variables: { id } });
 
   const handleDelete = useCallback(async () => {
     await deleteBook({ variables: { id } });
@@ -36,13 +34,8 @@ function BookDetailsPage() {
     navigate(-1);
   }, [deleteBook, id, navigate]);
 
-  if (loading) return <PageLoader />;
-
   // TODO
-  if (error) throw error;
   if (deleteError) throw deleteError;
-
-  const { name, members } = data.book;
 
   return (
     <SimpleLayout
@@ -62,49 +55,66 @@ function BookDetailsPage() {
       }
     >
       <main className="app-layout__main">
-        <Accordion>
-          <AccordionItem title="Book details" defaultOpen>
-            <List>
-              <ListScroller>
-                <ListItem>
-                  <Icon name="label" />
-                  <ListItemLabel>
-                    <span className="list-item__primary-line">Name</span>
-                    <br />
-                    <span className="list-item__secondary-line">{name}</span>
-                  </ListItemLabel>
-                </ListItem>
-                {/* TODO Add "created at" information, based on "insertedAt" field */}
-              </ListScroller>
-            </List>
-          </AccordionItem>
-          <AccordionItem title={`${members.length} members`}>
-            <List>
-              <ListScroller>
-                {members.map(({ id, role, user }) => (
-                  <ListItem key={id}>
-                    <ListItemAvatar src={user.avatarUrl} />
-                    <ListItemLabel>
-                      <span className="list-item__primary-line">
-                        {user.displayName}
-                      </span>
-                      <br />
-                      <span className="list-item__secondary-line">{role}</span>
-                    </ListItemLabel>
-                  </ListItem>
-                ))}
-                {/* TODO Display only if user has right to add new members */}
-                <ListItem to={`/books/${id}/invite`} role="button">
-                  <Icon name="account-plus" />
-                  <ListItemLabel>Add a new member</ListItemLabel>
-                </ListItem>
-              </ListScroller>
-            </List>
-          </AccordionItem>
-        </Accordion>
+        <BookDetails />
+        <BookBottomNav />
       </main>
-      <BookBottomNav />
     </SimpleLayout>
+  );
+}
+
+function BookDetails() {
+  const { id } = useParams();
+
+  const { data, loading, error } = useQuery(GET_BOOK, { variables: { id } });
+
+  if (loading) return <PageLoader />;
+
+  // TODO
+  if (error) throw error;
+
+  const { name, members } = data.book;
+
+  return (
+    <Accordion>
+      <AccordionItem title="Book details" defaultOpen>
+        <List>
+          <ListScroller>
+            <ListItem>
+              <Icon name="label" />
+              <ListItemLabel>
+                <span className="list-item__primary-line">Name</span>
+                <br />
+                <span className="list-item__secondary-line">{name}</span>
+              </ListItemLabel>
+            </ListItem>
+            {/* TODO Add "created at" information, based on "insertedAt" field */}
+          </ListScroller>
+        </List>
+      </AccordionItem>
+      <AccordionItem title={`${members.length} members`}>
+        <List>
+          <ListScroller>
+            {members.map(({ id, role, user }) => (
+              <ListItem key={id}>
+                <ListItemAvatar src={user.avatarUrl} />
+                <ListItemLabel>
+                  <span className="list-item__primary-line">
+                    {user.displayName}
+                  </span>
+                  <br />
+                  <span className="list-item__secondary-line">{role}</span>
+                </ListItemLabel>
+              </ListItem>
+            ))}
+            {/* TODO Display only if user has right to add new members */}
+            <ListItem to={`/books/${id}/invite`} role="button">
+              <Icon name="account-plus" />
+              <ListItemLabel>Add a new member</ListItemLabel>
+            </ListItem>
+          </ListScroller>
+        </List>
+      </AccordionItem>
+    </Accordion>
   );
 }
 
