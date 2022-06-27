@@ -55,6 +55,7 @@ export const FIND_BOOK_MEMBERS = gql`
         id
 
         user {
+          id
           displayName
           avatarUrl
         }

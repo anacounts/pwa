@@ -12,6 +12,7 @@ export const GET_BOOK = gql`
         role
 
         user {
+          id
           displayName
           avatarUrl
         }
