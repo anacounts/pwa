@@ -195,10 +195,15 @@ function getTransferDetailsInfo(rawData) {
     date: rawDate,
   } = rawData.moneyTransfer;
 
-  const amount = money.parse(rawAmount);
-  const date = rawDate.slice(0, -1);
+  const date = new Date(rawDate);
+  date.setMinutes(date.getMinutes() - date.getTimezoneOffset());
 
-  return { label, amount, type, date };
+  return {
+    label,
+    amount: money.parse(rawAmount),
+    type,
+    date: date.toISOString().slice(0, -5),
+  };
 }
 
 function PeerList({ transferData, transferLoading }) {
