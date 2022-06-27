@@ -28,14 +28,20 @@ function RegisterPage() {
       <form onSubmit={handleOnSubmit} className="auth-page__form">
         <label>
           Email
-          <input placeholder="john.doe@example.com" name="email" />
+          <input
+            type="email"
+            name="email"
+            autoComplete="email"
+            placeholder="john.doe@example.com"
+          />
         </label>
         <label>
           Password
           <input
-            placeholder="*****************"
             type="password"
             name="password"
+            autoCapitalize="new-password"
+            placeholder="*****************"
           />
         </label>
         <Button color="cta" className="mb-4">
@@ -46,7 +52,7 @@ function RegisterPage() {
         {data ? (
           <div>
             Your account was created !<br />
-            {/* TODO "An email was sent to confirm your email address" */}
+            {/* XXX "An email was sent to confirm your email address" */}
             You can now <Link to="/auth/login">sign in here</Link>.
           </div>
         ) : (

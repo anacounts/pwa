@@ -32,7 +32,7 @@ function InvitationsPage() {
 export default InvitationsPage;
 
 function InviteForm() {
-  const { id: bookId } = useParams();
+  const { bookId } = useParams();
 
   const [inviteUser, { loading, error }] = useMutation(INVITE_USER, {
     refetchQueries: [GET_BOOK, GET_BOOKS],
@@ -74,9 +74,11 @@ function InviteForm() {
 }
 
 function InviteList() {
-  const { id } = useParams();
+  const { bookId } = useParams();
 
-  const { data, loading, error } = useQuery(GET_BOOK, { variables: { id } });
+  const { data, loading, error } = useQuery(GET_BOOK, {
+    variables: { id: bookId },
+  });
 
   if (loading) return <PageLoader />;
 

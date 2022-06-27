@@ -13,10 +13,33 @@ export const FIND_MONEY_TRANSFERS = gql`
         date
 
         holder {
+          id
+
           user {
+            id
             displayName
-            avatarUrl
           }
+        }
+      }
+    }
+  }
+`;
+
+export const GET_MONEY_TRANSFER = gql`
+  query GetMoneyTransfer($id: ID!) {
+    moneyTransfer(id: $id) {
+      id
+      label
+      amount
+      type
+      date
+
+      peers {
+        id
+        weight
+
+        member {
+          id
         }
       }
     }

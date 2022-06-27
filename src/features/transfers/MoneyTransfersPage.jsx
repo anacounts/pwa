@@ -26,7 +26,7 @@ function transferIconAndClassForType(type) {
 }
 
 function MoneyTransfersPage() {
-  const { id } = useParams();
+  const { bookId } = useParams();
 
   return (
     <SimpleLayout title="Transfers">
@@ -34,7 +34,7 @@ function MoneyTransfersPage() {
         <TransfersList />
 
         <FabContainer>
-          <Fab to={`/books/${id}/transfers/new`}>
+          <Fab to={`/books/${bookId}/transfers/new`}>
             <Icon name="plus" alt="Add new transfer" />
           </Fab>
         </FabContainer>
@@ -46,10 +46,10 @@ function MoneyTransfersPage() {
 }
 
 function TransfersList() {
-  const { id } = useParams();
+  const { bookId } = useParams();
 
   const { data, loading, error } = useQuery(FIND_MONEY_TRANSFERS, {
-    variables: { bookId: id },
+    variables: { bookId },
   });
 
   if (loading) return <PageLoader />;
@@ -68,7 +68,7 @@ function TransfersList() {
             const [iconName, className] = transferIconAndClassForType(type);
 
             return (
-              <ListItem key={id}>
+              <ListItem key={id} to={`/books/${bookId}/transfers/${id}`}>
                 <Icon className={className} name={iconName} />
                 <ListItemLabel>
                   <span className={`list-item__primary-line ${className}`}>

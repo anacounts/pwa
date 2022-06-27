@@ -2,6 +2,14 @@ const CURRENCIES = {
   EUR: { exponent: 2, symbol: "€" },
 };
 
+function getCurrencyData(currency) {
+  const data = CURRENCIES[currency];
+  if (!data) {
+    throw new Error("Unsupported currency: " + currency);
+  }
+  return data;
+}
+
 /**
  * Represents an amount of money in a currency.
  *
@@ -30,42 +38,18 @@ export function serialize(money) {
  * @returns {Money}
  */
 export function parse(string) {
-  const [amount, currency] = string.split("/");
-  return { amount, currency };
-}
+  const [rawAmount, currency] = string.split("/");
 
-/**
- * Create a Money object from its equivalent object data.
- *
- * Object data are objects representing data of forms, usually created using
- * `form.toObject(new FormData(formEl))`.
- *
- * A money object data must contain an "amount" and a "currency" key.
- * Debugging hint: Keep in mind that disabled fields do not get into `FormData` objects.
- *
- * @param {Object} data An object data created from a form.
- *
- * @returns {Money}
- */
-export function fromObjectData(data) {
-  const { amount: rawAmount, currency } = data;
-  const amount = parseAmount(rawAmount, currency);
+  const { exponent } = getCurrencyData(currency);
+  const amount = formatNumber(rawAmount, exponent);
 
   return { amount, currency };
 }
 
-// Parses an amount from a string, for a specified currency.
-function parseAmount(string, currency) {
-  if (!(currency in CURRENCIES)) throw new Error("Currency not found");
-
-  // The string already includes decimal delimiter,
-  // the amount is correct already.
-  if (string.includes(".")) {
-    return string;
-  }
-
-  const { exponent } = CURRENCIES[currency];
-  return string + "." + "0".repeat(exponent);
+function formatNumber(amount, exponent) {
+  const integer = amount.slice(0, -exponent) || "0";
+  const decimal = amount.slice(-exponent);
+  return integer + "." + decimal;
 }
 
 /**
@@ -74,20 +58,6 @@ function parseAmount(string, currency) {
  * @returns {String}
  */
 export function format(money) {
-  const currency = CURRENCIES[money.currency];
-
-  // If the formatting options are unknown, default to serialzing the object
-  // So it's at least a *little* readable
-  if (!currency) return serialize(money);
-
-  const { exponent, symbol } = currency;
-
-  const number = formatNumber(money.amount, exponent);
-  return number + symbol;
-}
-
-function formatNumber(amount, exponent) {
-  const integer = amount.slice(0, -exponent) || "0";
-  const decimal = amount.slice(-exponent);
-  return integer + "," + decimal;
+  const { symbol } = getCurrencyData(money.currency);
+  return money.amount + symbol;
 }

@@ -34,14 +34,20 @@ function LoginPage() {
       <form onSubmit={handleOnSubmit} className="auth-page__form">
         <label>
           Email
-          <input placeholder="john.doe@example.com" name="email" />
+          <input
+            type="email"
+            name="email"
+            autoComplete="email"
+            placeholder="john.doe@example.com"
+          />
         </label>
         <label>
           Password
           <input
-            placeholder="*****************"
             type="password"
             name="password"
+            autoComplete="current-password"
+            placeholder="*****************"
           />
         </label>
         <Button color="cta" className="mb-4">

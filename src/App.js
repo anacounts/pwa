@@ -10,8 +10,11 @@ import NewBookPage from "./features/books/NewBookPage";
 import InvitationsPage from "./features/members/InvitationsPage";
 import ProfilePage from "./features/profile/ProfilePage";
 import ProfileEditPage from "./features/profile/ProfileEditPage";
+import {
+  NewMoneyTransferPage,
+  EditMoneyTransferPage,
+} from "./features/transfers/MoneyTransferFormPage";
 import MoneyTransfersPage from "./features/transfers/MoneyTransfersPage";
-import NewMoneyTransferPage from "./features/transfers/NewMoneyTransferPage";
 
 import "./App.css";
 
@@ -28,10 +31,14 @@ function App() {
       >
         <Route path="/books" element={<BooksPage />} />
         <Route path="/books/new" element={<NewBookPage />} />
-        <Route path="/books/:id/">
+        <Route path="/books/:bookId/">
           <Route path="details" element={<BookDetailsPage />} />
           <Route path="transfers" element={<MoneyTransfersPage />} />
           <Route path="transfers/new" element={<NewMoneyTransferPage />} />
+          <Route
+            path="transfers/:transferId"
+            element={<EditMoneyTransferPage />}
+          />
           <Route path="invite" element={<InvitationsPage />} />
           <Route index element={<Navigate to="details" replace />} />
         </Route>

@@ -10,20 +10,20 @@ export function BookBottomNav() {
     return location.pathname.endsWith("/details") ? "details" : "transfers";
   }, [location]);
 
-  const { id } = useParams();
+  const { bookId } = useParams();
 
   return (
     <BottomNav>
       <BottomNavButton
         icon="format-list-bulleted"
         label="Details"
-        to={`/books/${id}`}
+        to={`/books/${bookId}`}
         active={activeItem === "details"}
       />
       <BottomNavButton
         icon="swap-horizontal"
         label="Transfers"
-        to={`/books/${id}/transfers`}
+        to={`/books/${bookId}/transfers`}
         active={activeItem === "transfers"}
       />
     </BottomNav>

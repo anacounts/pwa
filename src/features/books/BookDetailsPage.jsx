@@ -20,40 +20,8 @@ import { GET_BOOK, GET_BOOKS } from "./queries";
 import { DELETE_BOOK } from "./mutations";
 
 function BookDetailsPage() {
-  const navigate = useNavigate();
-
-  // TODO Maybe move menu to its own component
-  const [deleteBook, { loading: deleteLoading, error: deleteError }] =
-    useMutation(DELETE_BOOK, { refetchQueries: [GET_BOOKS] });
-
-  const { id } = useParams();
-
-  const handleDelete = useCallback(async () => {
-    await deleteBook({ variables: { id } });
-
-    navigate(-1);
-  }, [deleteBook, id, navigate]);
-
-  // TODO
-  if (deleteError) throw deleteError;
-
   return (
-    <SimpleLayout
-      title="Book"
-      menu={
-        <List element="menu">
-          {/* TODO Add an alert when clicking here */}
-          <ListItem
-            className={deleteLoading ? "text-disabled" : "text-error"}
-            onClick={handleDelete}
-            role="button"
-          >
-            <Icon name="delete" />
-            <ListItemLabel>Delete</ListItemLabel>
-          </ListItem>
-        </List>
-      }
-    >
+    <SimpleLayout title="Book" menu={<PageMenu />}>
       <main className="app-layout__main">
         <BookDetails />
         <BookBottomNav />
@@ -62,10 +30,45 @@ function BookDetailsPage() {
   );
 }
 
-function BookDetails() {
-  const { id } = useParams();
+function PageMenu() {
+  const navigate = useNavigate();
 
-  const { data, loading, error } = useQuery(GET_BOOK, { variables: { id } });
+  const [deleteBook, { loading, error }] = useMutation(DELETE_BOOK, {
+    refetchQueries: [GET_BOOKS],
+  });
+
+  const { bookId } = useParams();
+
+  const handleDelete = useCallback(async () => {
+    await deleteBook({ variables: { id: bookId } });
+
+    navigate(-1);
+  }, [deleteBook, bookId, navigate]);
+
+  // TODO
+  if (error) throw error;
+
+  return (
+    <List element="menu">
+      {/* TODO Add an alert when clicking here */}
+      <ListItem
+        className={loading ? "text-disabled" : "text-error"}
+        onClick={handleDelete}
+        role="button"
+      >
+        <Icon name="delete" />
+        <ListItemLabel>Delete</ListItemLabel>
+      </ListItem>
+    </List>
+  );
+}
+
+function BookDetails() {
+  const { bookId } = useParams();
+
+  const { data, loading, error } = useQuery(GET_BOOK, {
+    variables: { id: bookId },
+  });
 
   if (loading) return <PageLoader />;
 
@@ -107,7 +110,7 @@ function BookDetails() {
               </ListItem>
             ))}
             {/* TODO Display only if user has right to add new members */}
-            <ListItem to={`/books/${id}/invite`} role="button">
+            <ListItem to={`/books/${bookId}/invite`} role="button">
               <Icon name="account-plus" />
               <ListItemLabel>Add a new member</ListItemLabel>
             </ListItem>
