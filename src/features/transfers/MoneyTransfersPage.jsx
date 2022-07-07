@@ -63,7 +63,7 @@ function TransfersList() {
     <List>
       <ListScroller>
         {moneyTransfers.map(
-          ({ id, label, amount: rawAmount, type, date: rawDate, holder }) => {
+          ({ id, label, amount: rawAmount, type, date: rawDate, tenant }) => {
             const amount = money.parse(rawAmount);
             const [iconName, className] = transferIconAndClassForType(type);
 
@@ -76,7 +76,7 @@ function TransfersList() {
                   </span>
                   <br />
                   <span className="list-item__secondary-line">
-                    {holder.user.displayName}
+                    {tenant.user.displayName}
                   </span>
                 </ListItemLabel>
                 <div className="text-right">

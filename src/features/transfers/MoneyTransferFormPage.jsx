@@ -62,6 +62,7 @@ function MoneyTransferFormPage({
         amount: money.serialize(objectData.amount),
         type: objectData.type,
         date: new Date(objectData.date).toISOString(),
+        tenantId: objectData.tenantId,
 
         peers: Object.values(objectData.peers)
           .filter(({ checked }) => checked)
@@ -78,9 +79,9 @@ function MoneyTransferFormPage({
       <main>
         <form onSubmit={handleOnSubmit}>
           <TransferDetails
-            data={transferData}
-            loading={transferLoading}
-            error={transferError}
+            transferData={transferData}
+            transferLoading={transferLoading}
+            transferError={transferError}
           />
 
           <PeerList
@@ -113,12 +114,23 @@ MoneyTransferFormPage.propTypes = {
   submitError: PropTypes.object,
 };
 
-function TransferDetails({ data, loading, error }) {
-  if (loading) return <PageLoader />;
+function TransferDetails({ transferData, transferLoading, transferError }) {
+  const { bookId } = useParams();
 
-  if (error) throw error;
+  const {
+    data: membersData,
+    loading: membersLoading,
+    error: membersError,
+  } = useQuery(FIND_BOOK_MEMBERS, { variables: { bookId } });
 
-  const { label, amount, type, date } = getTransferDetailsInfo(data);
+  if (transferLoading || membersLoading) return <PageLoader />;
+
+  if (transferError) throw transferError;
+  if (membersError) throw membersError;
+
+  const { label, amount, type, date, tenant } =
+    getTransferDetailsInfo(transferData);
+  const { members } = membersData.book;
 
   return (
     <div className="mx-4">
@@ -167,6 +179,17 @@ function TransferDetails({ data, loading, error }) {
       </label>
 
       <label>
+        Tenant
+        <select name="tenantId" defaultValue={tenant?.id} required>
+          {members.map(({ id, user }) => (
+            <option key={id} value={id}>
+              {user.displayName}
+            </option>
+          ))}
+        </select>
+      </label>
+
+      <label>
         Date
         <input
           type="datetime-local"
@@ -180,9 +203,9 @@ function TransferDetails({ data, loading, error }) {
 }
 
 TransferDetails.propTypes = {
-  data: PropTypes.object.isRequired,
-  loading: PropTypes.bool,
-  error: PropTypes.object,
+  transferData: PropTypes.object.isRequired,
+  transferLoading: PropTypes.bool,
+  transferError: PropTypes.object,
 };
 
 function getTransferDetailsInfo(rawData) {
@@ -193,6 +216,7 @@ function getTransferDetailsInfo(rawData) {
     amount: rawAmount,
     type,
     date: rawDate,
+    tenant,
   } = rawData.moneyTransfer;
 
   const date = new Date(rawDate);
@@ -203,6 +227,7 @@ function getTransferDetailsInfo(rawData) {
     amount: money.parse(rawAmount),
     type,
     date: date.toISOString().slice(0, -5),
+    tenant,
   };
 }
 
