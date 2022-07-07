@@ -12,7 +12,7 @@ export const FIND_MONEY_TRANSFERS = gql`
         amount
         date
 
-        holder {
+        tenant {
           id
 
           user {
@@ -33,6 +33,10 @@ export const GET_MONEY_TRANSFER = gql`
       amount
       type
       date
+
+      tenant {
+        id
+      }
 
       peers {
         id
