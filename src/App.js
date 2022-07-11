@@ -4,6 +4,7 @@ import { useAuth } from "./features/auth/context";
 
 import LoginPage from "./features/auth/LoginPage";
 import RegisterPage from "./features/auth/RegisterPage";
+import BookBalancePage from "./features/balance/BookBalancePage";
 import BookDetailsPage from "./features/books/BookDetailsPage";
 import BooksPage from "./features/books/BooksPage";
 import NewBookPage from "./features/books/NewBookPage";
@@ -39,6 +40,7 @@ function App() {
             path="transfers/:transferId"
             element={<EditMoneyTransferPage />}
           />
+          <Route path="balance" element={<BookBalancePage />} />
           <Route path="invite" element={<InvitationsPage />} />
           <Route index element={<Navigate to="details" replace />} />
         </Route>

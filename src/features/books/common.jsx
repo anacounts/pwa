@@ -7,7 +7,11 @@ export function BookBottomNav() {
   const location = useLocation();
 
   const activeItem = useMemo(() => {
-    return location.pathname.endsWith("/details") ? "details" : "transfers";
+    return location.pathname.endsWith("/details")
+      ? "details"
+      : location.pathname.endsWith("/balance")
+      ? "balance"
+      : "transfers";
   }, [location]);
 
   const { bookId } = useParams();
@@ -25,6 +29,12 @@ export function BookBottomNav() {
         label="Transfers"
         to={`/books/${bookId}/transfers`}
         active={activeItem === "transfers"}
+      />
+      <BottomNavButton
+        icon="wallet"
+        label="Balance"
+        to={`/books/${bookId}/balance`}
+        active={activeItem === "balance"}
       />
     </BottomNav>
   );
