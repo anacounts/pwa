@@ -38,6 +38,11 @@ export const GET_MONEY_TRANSFER = gql`
         id
       }
 
+      balanceParams {
+        meansCode
+        params
+      }
+
       peers {
         id
         weight

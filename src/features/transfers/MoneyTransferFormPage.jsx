@@ -63,6 +63,10 @@ function MoneyTransferFormPage({
         type: objectData.type,
         date: new Date(objectData.date).toISOString(),
         tenantId: objectData.tenantId,
+        balanceParams: {
+          meansCode: objectData.balanceParams.meansCode,
+          params: "{}",
+        },
 
         peers: Object.values(objectData.peers)
           .filter(({ checked }) => checked)
@@ -128,7 +132,7 @@ function TransferDetails({ transferData, transferLoading, transferError }) {
   if (transferError) throw transferError;
   if (membersError) throw membersError;
 
-  const { label, amount, type, date, tenant } =
+  const { label, amount, type, date, tenant, balanceParams } =
     getTransferDetailsInfo(transferData);
   const { members } = membersData.book;
 
@@ -190,6 +194,18 @@ function TransferDetails({ transferData, transferLoading, transferError }) {
       </label>
 
       <label>
+        How to balance ?
+        <select
+          name="balanceParams[meansCode]"
+          defaultValue={balanceParams?.meansCode}
+          required
+        >
+          <option value="DIVIDE_EQUALLY">Divide equally</option>
+        </select>
+        {/* TODO <button>More information</button> */}
+      </label>
+
+      <label>
         Date
         <input
           type="datetime-local"
@@ -217,6 +233,7 @@ function getTransferDetailsInfo(rawData) {
     type,
     date: rawDate,
     tenant,
+    balanceParams,
   } = rawData.moneyTransfer;
 
   const date = new Date(rawDate);
@@ -228,6 +245,7 @@ function getTransferDetailsInfo(rawData) {
     type,
     date: date.toISOString().slice(0, -5),
     tenant,
+    balanceParams,
   };
 }
 

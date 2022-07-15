@@ -17,6 +17,11 @@ export const CREATE_MONEY_TRANSFER = gql`
           displayName
         }
       }
+
+      balanceParams {
+        meansCode
+        params
+      }
     }
   }
 `;
@@ -35,6 +40,11 @@ export const UPDATE_MONEY_TRANSFER = gql`
 
       tenant {
         id
+      }
+
+      balanceParams {
+        meansCode
+        params
       }
 
       peers {

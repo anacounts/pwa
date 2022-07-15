@@ -1,7 +1,7 @@
 import { gql } from "@apollo/client";
 
 export const CREATE_BOOK = gql`
-  mutation CreateBook($attrs: BookInput!) {
+  mutation CreateBook($attrs: BookCreationInput!) {
     createBook(attrs: $attrs) {
       id
     }
