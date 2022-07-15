@@ -9,6 +9,8 @@ import { useMutation } from "@apollo/client";
 import { CREATE_BOOK } from "./mutations";
 import { GET_BOOKS } from "./queries";
 
+import * as form from "../../utils/form";
+
 import "./NewBookPage.css";
 
 function NewBookPage() {
@@ -21,9 +23,17 @@ function NewBookPage() {
       event.preventDefault();
 
       const formData = new FormData(event.currentTarget);
-      const name = formData.get("name");
+      const objectData = form.toObject(formData);
 
-      createBook({ variables: { attrs: { name } } });
+      const attrs = {
+        name: objectData.name,
+        balanceParams: {
+          meansCode: objectData.balanceParams.meansCode,
+          params: "{}",
+        },
+      };
+
+      createBook({ variables: { attrs } });
     },
     [createBook]
   );
@@ -39,6 +49,14 @@ function NewBookPage() {
             required
             disabled={loading}
           />
+        </label>
+
+        <label>
+          How to balance by default ?
+          <select name="balanceParams[meansCode]" required>
+            <option value="DIVIDE_EQUALLY">Divide equally</option>
+          </select>
+          {/* TODO <button>More information</button> */}
         </label>
 
         <div className="new-book-page__submit-button">
