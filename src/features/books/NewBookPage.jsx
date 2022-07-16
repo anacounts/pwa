@@ -55,6 +55,7 @@ function NewBookPage() {
           How to balance by default ?
           <select name="balanceParams[meansCode]" required>
             <option value="DIVIDE_EQUALLY">Divide equally</option>
+            <option value="WEIGHT_BY_INCOME">Weight by income</option>
           </select>
           {/* TODO <button>More information</button> */}
         </label>

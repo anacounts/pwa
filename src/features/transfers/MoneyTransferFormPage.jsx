@@ -201,6 +201,7 @@ function TransferDetails({ transferData, transferLoading, transferError }) {
           required
         >
           <option value="DIVIDE_EQUALLY">Divide equally</option>
+          <option value="WEIGHT_BY_INCOME">Weight by income</option>
         </select>
         {/* TODO <button>More information</button> */}
       </label>
