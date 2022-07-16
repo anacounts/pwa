@@ -1,11 +1,16 @@
 import { gql } from "@apollo/client";
 
-export const GET_BOOK = gql`
-  query GetBook($id: ID!) {
+export const GET_BOOK_DETAILS = gql`
+  query GetBookDetails($id: ID!) {
     book(id: $id) {
       id
       name
       insertedAt
+
+      defaultBalanceParams {
+        meansCode
+        params
+      }
 
       members {
         id

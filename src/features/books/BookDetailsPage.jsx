@@ -16,8 +16,20 @@ import { PageLoader } from "../../components/Loader";
 import { useNavigate, useParams } from "react-router-dom";
 
 import { useMutation, useQuery } from "@apollo/client";
-import { GET_BOOK, GET_BOOKS } from "./queries";
+import { GET_BOOK_DETAILS, GET_BOOKS } from "./queries";
 import { DELETE_BOOK } from "./mutations";
+
+function balanceMeansCodeToLabel(code) {
+  switch (code) {
+    case "DIVIDE_EQUALLY":
+      return "Divide equally";
+    case "WEIGHT_BY_INCOME":
+      return "Weight by income";
+    default:
+      console.error("Unknown balance means code: " + code);
+      return code;
+  }
+}
 
 function BookDetailsPage() {
   return (
@@ -50,6 +62,10 @@ function PageMenu() {
 
   return (
     <List element="menu">
+      <ListItem to={`/books/${bookId}/edit`}>
+        <Icon name="pencil" />
+        <ListItemLabel>Edit</ListItemLabel>
+      </ListItem>
       {/* TODO Add an alert when clicking here */}
       <ListItem
         className={loading ? "text-disabled" : "text-error"}
@@ -66,7 +82,7 @@ function PageMenu() {
 function BookDetails() {
   const { bookId } = useParams();
 
-  const { data, loading, error } = useQuery(GET_BOOK, {
+  const { data, loading, error } = useQuery(GET_BOOK_DETAILS, {
     variables: { id: bookId },
   });
 
@@ -75,7 +91,7 @@ function BookDetails() {
   // TODO
   if (error) throw error;
 
-  const { name, members } = data.book;
+  const { name, defaultBalanceParams, members } = data.book;
 
   return (
     <Accordion>
@@ -88,6 +104,16 @@ function BookDetails() {
                 <span className="list-item__primary-line">Name</span>
                 <br />
                 <span className="list-item__secondary-line">{name}</span>
+              </ListItemLabel>
+            </ListItem>
+            <ListItem>
+              <Icon name="wallet" />
+              <ListItemLabel>
+                <span className="list-item__primary-line">Balancing</span>
+                <br />
+                <span className="list-item__secondary-line">
+                  {balanceMeansCodeToLabel(defaultBalanceParams.meansCode)}
+                </span>
               </ListItemLabel>
             </ListItem>
             {/* TODO Add "created at" information, based on "insertedAt" field */}

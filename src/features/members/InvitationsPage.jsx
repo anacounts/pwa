@@ -15,7 +15,7 @@ import {
 import { useParams } from "react-router-dom";
 
 import { useMutation, useQuery } from "@apollo/client";
-import { GET_BOOK, GET_BOOKS } from "../books/queries";
+import { GET_BOOK_DETAILS, GET_BOOKS } from "../books/queries";
 import { INVITE_USER } from "./mutations";
 
 import "./InvitationsPage.css";
@@ -35,7 +35,7 @@ function InviteForm() {
   const { bookId } = useParams();
 
   const [inviteUser, { loading, error }] = useMutation(INVITE_USER, {
-    refetchQueries: [GET_BOOK, GET_BOOKS],
+    refetchQueries: [GET_BOOK_DETAILS, GET_BOOKS],
   });
 
   const handleSubmit = useCallback(
@@ -76,7 +76,7 @@ function InviteForm() {
 function InviteList() {
   const { bookId } = useParams();
 
-  const { data, loading, error } = useQuery(GET_BOOK, {
+  const { data, loading, error } = useQuery(GET_BOOK_DETAILS, {
     variables: { id: bookId },
   });
 
