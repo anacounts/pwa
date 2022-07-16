@@ -8,7 +8,7 @@ import BookBalancePage from "./features/balance/BookBalancePage";
 import UserBalanceProfile from "./features/balance/UserBalanceProfile";
 import BookDetailsPage from "./features/books/BookDetailsPage";
 import BooksPage from "./features/books/BooksPage";
-import NewBookPage from "./features/books/NewBookPage";
+import { NewBookPage, EditBookPage } from "./features/books/BookFormPage";
 import InvitationsPage from "./features/members/InvitationsPage";
 import ProfilePage from "./features/profile/ProfilePage";
 import ProfileEditPage from "./features/profile/ProfileEditPage";
@@ -33,6 +33,7 @@ function App() {
       >
         <Route path="/books" element={<BooksPage />} />
         <Route path="/books/new" element={<NewBookPage />} />
+        <Route path="/books/:bookId/edit" element={<EditBookPage />} />
         <Route path="/books/:bookId/">
           <Route path="details" element={<BookDetailsPage />} />
           <Route path="transfers" element={<MoneyTransfersPage />} />

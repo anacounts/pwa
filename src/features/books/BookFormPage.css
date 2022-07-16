@@ -1,8 +1,8 @@
-.new-book-page {
+.book-form-page {
   margin: 0 1rem;
 }
 
-.new-book-page__submit-button {
+.book-form-page__submit-button {
   display: flex;
   align-items: center;
   margin-bottom: 1rem;
