@@ -1,9 +1,10 @@
 import React from "react";
+
+import RootLayout from "../../layouts/RootLayout";
+
 import Avatar from "../../components/Avatar";
 import Button from "../../components/Button";
 import { PageLoader } from "../../components/Loader";
-
-import RootLayout from "../../layouts/RootLayout";
 
 import { useQuery } from "@apollo/client";
 import { GET_PROFILE } from "./queries";
@@ -38,6 +39,11 @@ function ProfilePage() {
       </Button>
 
       {/* TODO Revoke all auth tokens */}
+
+      <h3>Configuration</h3>
+      <Button to="/profile/balance" color="feature">
+        Balance Profile
+      </Button>
     </RootLayout>
   );
 }

@@ -5,6 +5,7 @@ import { useAuth } from "./features/auth/context";
 import LoginPage from "./features/auth/LoginPage";
 import RegisterPage from "./features/auth/RegisterPage";
 import BookBalancePage from "./features/balance/BookBalancePage";
+import UserBalanceProfile from "./features/balance/UserBalanceProfile";
 import BookDetailsPage from "./features/books/BookDetailsPage";
 import BooksPage from "./features/books/BooksPage";
 import NewBookPage from "./features/books/NewBookPage";
@@ -46,6 +47,7 @@ function App() {
         </Route>
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/profile/edit" element={<ProfileEditPage />} />
+        <Route path="/profile/balance" element={<UserBalanceProfile />} />
         <Route index element={<Navigate to="/books" replace />} />
       </Route>
       <Route path="/auth">

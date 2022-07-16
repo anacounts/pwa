@@ -42,3 +42,12 @@ export const GET_BOOK_BALANCE = gql`
     }
   }
 `;
+
+export const BALANCE_USER_PARAMS = gql`
+  query BalanceUserParams {
+    balanceUserParams {
+      meansCode
+      params
+    }
+  }
+`;
